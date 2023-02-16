@@ -1,0 +1,11 @@
+body {
+    background-color: black;
+    overflow: hidden;
+}
+
+img {
+    width: 1920;
+    height: 1080;
+    zoom: 80%;
+    margin-top: 20px;
+}
