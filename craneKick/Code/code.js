@@ -6,8 +6,47 @@ let c_width = canvasRoom.width = 1024;
 let c_height = canvasRoom.height = 576;
 ctx.fillRect(0, 0, c_width, c_height)
 
+// Definerer boolean variabler for movement
+let w_key = false;
+let a_key = false;
+let s_key = false;
+let d_key = false;
+
+// Definerer tyngdekraft
 let gravity = 1;
-// klasse for spiller
+
+
+// Kode for bevegelse gjennom wasd
+document.onkeydown = function (event) {
+    if (event.key == "w") {
+        w_key = true;
+    }
+    if (event.key == "s"){
+        s_key = true;
+    } 
+    if (event.key == "a") {
+        a_key = true;
+    } 
+    if (event.key == "d") {
+        d_key = true;
+   }   
+}
+
+
+document.onkeyup = function (event) {
+    if (event.key == "w") {
+        w_key = false;
+    }
+    if (event.key == "s"){
+        s_key = false;
+    } 
+    if (event.key == "a") {
+        a_key = false;
+    } 
+    if (event.key == "d") {
+        d_key = false;
+   }   
+}
 
 
 
