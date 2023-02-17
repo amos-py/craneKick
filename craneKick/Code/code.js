@@ -78,16 +78,13 @@ let enemy = new Sprite( {
 function keypress(){
     if (w_key==true){
         player.velocity.y=-5
-        console.log("t")
     }
     if (a_key==true && d_key==false){
         player.velocity.x=-5
-        console.log("t")
 
     }
     if (d_key==true && a_key==false){
         player.velocity.x=5
-        console.log("t")
 
     }
     if (a_key==false && d_key==false){
