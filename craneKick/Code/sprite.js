@@ -25,6 +25,7 @@ class Sprite {
         } else {
             this.velocity.y += gravity;
         }
+        // prøvde å gjøre samme for høyre og venstre men d bæsj
         if (this.position.x + this.width + this.velocity.x <= 0 || this.position.x + this.width + this.velocity.x >=c_width) {
             this.velocity.x = 0;
         }
