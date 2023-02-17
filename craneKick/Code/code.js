@@ -1,5 +1,6 @@
 let canvasRoom = document.getElementById("canvasRoom");
 
+
 // Sett opp canvas
 let ctx = canvasRoom.getContext("2d");
 let c_width = canvasRoom.width = 1024;
@@ -73,7 +74,7 @@ let enemy = new Sprite( {
         y: 10
     }
 }); 
-
+player.draw();
 // funksjon som starter programmet og sørger for at der fortsatter til det stoppes.
 function animate() {
     window.requestAnimationFrame(animate);
