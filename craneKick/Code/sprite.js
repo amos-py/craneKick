@@ -1,15 +1,16 @@
 class Sprite {
     position;
     velocity;
-    constructor( {position, velocity} ) {
+    constructor({ position, velocity }) {
         this.position = position;
         this.velocity = velocity;
         this.height = 150;
+        this.width = 50;
     }
     // tegn spillerene 
     draw() {
         ctx.fillStyle = "red"
-        ctx.fillRect(this.position.x, this.position.y, 50, this.height);
+        ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 
     // oppdaterer posisjonen til spilleren
@@ -19,10 +20,13 @@ class Sprite {
         this.position.y = this.position.y + this.velocity.y;
 
         // sørger for at spilleren holder seg innenfor cavas
-        if (this.position.y + this.height + this.velocity.y >= c_height){
+        if (this.position.y + this.height + this.velocity.y >= c_height) {
             this.velocity.y = 0;
         } else {
             this.velocity.y += gravity;
         }
-    }
+        if (this.position.x + this.width + this.velocity.x <= 0 || this.position.x + this.width + this.velocity.x >=c_width) {
+            this.velocity.x = 0;
+        }
+    }   
 }

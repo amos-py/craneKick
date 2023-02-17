@@ -22,15 +22,15 @@ document.onkeydown = function (event) {
     if (event.key == "w") {
         w_key = true;
     }
-    if (event.key == "s"){
+    if (event.key == "s") {
         s_key = true;
-    } 
+    }
     if (event.key == "a") {
         a_key = true;
-    } 
+    }
     if (event.key == "d") {
         d_key = true;
-   }   
+    }
 }
 
 
@@ -38,57 +38,57 @@ document.onkeyup = function (event) {
     if (event.key == "w") {
         w_key = false;
     }
-    if (event.key == "s"){
+    if (event.key == "s") {
         s_key = false;
-    } 
+    }
     if (event.key == "a") {
         a_key = false;
-    } 
+    }
     if (event.key == "d") {
         d_key = false;
-   }   
+    }
 }
 
 
 
 // Definerer spilleren og dens verdier
-let player = new Sprite( {
-    position: { 
+let player = new Sprite({
+    position: {
         x: 0,
         y: 0
-    },  
+    },
     velocity: {
         x: 0,
         y: 10
     }
-}); 
+});
 
 // Definerer motstander og dens verdier
-let enemy = new Sprite( {
-    position: { 
+let enemy = new Sprite({
+    position: {
         x: 400,
         y: 100
-    },  
+    },
     velocity: {
         x: 0,
         y: 10
     }
-}); 
+});
 
-function keypress(){
-    if (w_key==true){
-        player.velocity.y=-5
+function keypress() {
+    if (w_key == true) {
+        player.velocity.y = -5
     }
-    if (a_key==true && d_key==false){
-        player.velocity.x=-5
-
-    }
-    if (d_key==true && a_key==false){
-        player.velocity.x=5
+    if (a_key == true && d_key == false) {
+        player.velocity.x = -5
 
     }
-    if (a_key==false && d_key==false){
-        player.velocity.x=0
+    if (d_key == true && a_key == false) {
+        player.velocity.x = 5
+
+    }
+    if (a_key == false && d_key == false) {
+        player.velocity.x = 0
     }
 }
 // funksjon som starter programmet og sørger for at der fortsatter til det stoppes.
