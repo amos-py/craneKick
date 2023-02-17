@@ -90,22 +90,7 @@ let enemy = new Sprite({
     }
 });
 
-function keypress() {
-    if (w_key == true) {
-        player.velocity.y = -5
-    }
-    if (a_key == true && d_key == false) {
-        player.velocity.x = -5
 
-    }
-    if (d_key == true && a_key == false) {
-        player.velocity.x = 5
-
-    }
-    if (a_key == false && d_key == false) {
-        player.velocity.x = 0
-    }
-}
 // funksjon som starter programmet og sørger for at der fortsatter til det stoppes.
 function animate() {
     window.requestAnimationFrame(animate);
