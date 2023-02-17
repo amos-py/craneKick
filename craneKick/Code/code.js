@@ -74,7 +74,6 @@ let enemy = new Sprite( {
         y: 10
     }
 }); 
-player.draw();
 // funksjon som starter programmet og sørger for at der fortsatter til det stoppes.
 function animate() {
     window.requestAnimationFrame(animate);
