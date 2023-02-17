@@ -6,6 +6,8 @@ let c_width = canvasRoom.width = 1024;
 let c_height = canvasRoom.height = 576;
 ctx.fillRect(0, 0, c_width, c_height)
 
+//
+
 let gravity = 1;
 // klasse for spiller
 class Sprite {
