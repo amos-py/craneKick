@@ -26,35 +26,3 @@ class Sprite {
         }
     }
 }
-
-// Kode for bevegelse gjennom wasd
-document.onkeydown = function (event) {
-    if (event.key == "w") {
-        player.velocity.y = -10;
-    }
-    if (event.key == "s"){
-        player.velocity.y = 1;
-    } 
-    if (event.key == "a") {
-        player.velocity.x = -10;
-    } 
-    if (event.key == "d") {
-        player.velocity.x = 10;
-   }   
-}
-
-
-document.onkeyup = function (event) {
-    if (event.key == "w") {
-        player.velocity.y = 0;
-    }
-    if (event.key == "s"){
-        player.velocity.y = 0;
-    }   
-    if (event.key == "a") {
-        player.velocity.x = 0;
-    }
-    if (event.key == "d") {
-        player.velocity.x = 0;
-    }
-}
