@@ -6,9 +6,15 @@ let c_width = canvasRoom.width = 1024;
 let c_height = canvasRoom.height = 576;
 ctx.fillRect(0, 0, c_width, c_height)
 
-//
+// Definerer boolean variabler for movement
+let w_key = false;
+let a_key = false;
+let s_key = false;
+let d_key = false;
 
+// Definerer tyngdekraft
 let gravity = 1;
+
 // klasse for spiller
 class Sprite {
     position;
@@ -42,34 +48,35 @@ class Sprite {
 // Kode for bevegelse gjennom wasd
 document.onkeydown = function (event) {
     if (event.key == "w") {
-        player.velocity.y = -10;
+        w_key = true;
     }
     if (event.key == "s"){
-        player.velocity.y = 1;
+        s_key = true;
     } 
     if (event.key == "a") {
-        player.velocity.x = -10;
+        a_key = true;
     } 
     if (event.key == "d") {
-        player.velocity.x = 10;
+        d_key = true;
    }   
 }
 
 
 document.onkeyup = function (event) {
     if (event.key == "w") {
-        player.velocity.y = 0;
+        w_key = false;
     }
     if (event.key == "s"){
-        player.velocity.y = 0;
-    }   
+        s_key = false;
+    } 
     if (event.key == "a") {
-        player.velocity.x = 0;
-    }
+        a_key = false;
+    } 
     if (event.key == "d") {
-        player.velocity.x = 0;
-    }
+        d_key = false;
+   }   
 }
+
 
 
 // Definerer spilleren og dens verdier
