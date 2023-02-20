@@ -1,16 +1,28 @@
 class Sprite {
     position;
     velocity;
-    constructor({ position, velocity }) {
+    constructor({ position, velocity, color = "red" }) {
         this.position = position;
         this.velocity = velocity;
         this.height = 150;
         this.width = 50;
+        this.attackPos = {
+            position: this.position,
+            width: 100,
+            height: 50,
+        }
+        this.isAttacking;
+        this.color = color;
     }
     // tegn spillerene 
     draw() {
-        ctx.fillStyle = "red"
+        ctx.fillStyle = this.color;
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+
+        //attack
+        ctx.fillStyle = "yellow";
+        ctx.fillRect(this.attackPos.position.x, this.attackPos.position.y,
+            this.attackPos.width, this.attackPos.height);
     }
 
     // oppdaterer posisjonen til spilleren
@@ -26,8 +38,18 @@ class Sprite {
             this.velocity.y += gravity;
         }
         // prøvde å gjøre samme for høyre og venstre men d bæsj
-        if (this.position.x + this.width + this.velocity.x <= 0 || this.position.x + this.width + this.velocity.x >=c_width) {
+        if (this.position.x + this.width + this.velocity.x <= 0 ||
+            this.position.x + this.width + this.velocity.x >= c_width) {
             this.velocity.x = 0;
         }
-    }   
+
+
+    }
+
+    attack() {
+        this.isAttacking = true;
+        setTimeout(() => {
+            this.isAttacking = false
+        }, 100)
+    }
 }

@@ -12,6 +12,7 @@ let w_key = false;
 let a_key = false;
 let s_key = false;
 let d_key = false;
+let spacebar = false;
 
 // Definerer tyngdekraft
 let gravity = 1;
@@ -31,6 +32,9 @@ document.onkeydown = function (event) {
     if (event.key == "d") {
         d_key = true;
     }
+    if (event.key == " ") {
+        spacebar = true;
+    }
 }
 
 
@@ -47,22 +51,40 @@ document.onkeyup = function (event) {
     if (event.key == "d") {
         d_key = false;
     }
+    if (event.key == " ") {
+        spacebar = false;
+    }
 }
 
-function keypress(){
-    if (w_key==true){
-        player.velocity.y=-5
+//alle button presses som me trenge
+function keypress() {
+    if (w_key == true) {
+        player.velocity.y = -5;
     }
-    if (a_key==true && d_key==false){
-        player.velocity.x=-5
+    if (a_key == true && d_key == false) {
+        player.velocity.x = -5;
 
     }
-    if (d_key==true && a_key==false){
-        player.velocity.x=5
+    if (d_key == true && a_key == false) {
+        player.velocity.x = 5;
 
     }
-    if (a_key==false && d_key==false){
-        player.velocity.x=0
+    if (a_key == false && d_key == false) {
+        player.velocity.x = 0;
+    }
+    if (spacebar == true) {
+        player.attack();
+    }
+}
+//hitbox detection osv.
+function hitdetection() {
+    if (player.attackPos.position.x + player.attackPos.width >= enemy.position.x &&
+        player.attackPos.position.x <= enemy.position.x + enemy.width &&
+        player.attackPos.position.y + player.attackPos.height >= enemy.position.y &&
+        player.attackPos.position.y <= enemy.position.y + enemy.height &&
+        player.isAttacking == true) {
+        player.isAttacking = false;
+        console.log("hit");
     }
 }
 
@@ -87,16 +109,23 @@ let enemy = new Sprite({
     velocity: {
         x: 0,
         y: 10
-    }
+    },
+    color: "blue"
 });
 
 
 // funksjon som starter programmet og sørger for at der fortsatter til det stoppes.
 function animate() {
     window.requestAnimationFrame(animate);
+
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, c_width, c_height);
+
+    //funksjoner
     keypress();
+    hitdetection();
+
+
     player.updatePosition();
     enemy.updatePosition();
 }
