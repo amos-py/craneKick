@@ -72,7 +72,6 @@ function keypress() {
     }
     if (spacebar == true) {
         spacebar = false;
-        player.attack()
         console.log("spacebar")
     }
 
@@ -80,12 +79,15 @@ function keypress() {
 //hitbox detection osv.
 function hitdetection() {
     if (player.attackPos.xPos + player.attackPos.width >= enemy.position.x &&
-        player.attackPos.xPos <= enemy.xPos + enemy.width &&
+        player.attackPos.xPos <= enemy.position.x + enemy.width &&
+
+        // AAAAAAAAAAAAAAA DET ER NOE GALT MED DENNE DELEN UNDER HER FOR HITBOX
         player.attackPos.yPos + player.attackPos.height >= enemy.position.y &&
-        player.attackPos.yPos <= enemy.position.y + enemy.height &&
-        player.isAttacking == true) {
-        player.isAttacking = false
+        player.attackPos.yPos <= enemy.position.y + enemy.height /*&&
+        isAttacking==true*/) {
+        player.attack()
         console.log("hit");
+        player.isAttacking = false
     }
 }
 
