@@ -7,7 +7,8 @@ class Sprite {
         this.height = 150;
         this.width = 50;
         this.attackPos = {
-            position: this.position,
+            xPos: this.position.x,
+            yPos: 100,
             width: 100,
             height: 50,
         }
@@ -21,7 +22,7 @@ class Sprite {
 
         //attack
         ctx.fillStyle = "yellow";
-        ctx.fillRect(this.attackPos.position.x, this.attackPos.position.y,
+        ctx.fillRect(this.attackPos.xPos, this.position.y,
             this.attackPos.width, this.attackPos.height);
     }
 
@@ -30,6 +31,13 @@ class Sprite {
         this.draw()
         this.position.x = this.position.x + this.velocity.x;
         this.position.y = this.position.y + this.velocity.y;
+
+        if (this.velocity.x <= -5) {
+            this.attackPos.xPos = this.position.x - this.width;
+        }
+        if (this.velocity.x >= 5) {
+            this.attackPos.xPos = this.position.x;
+        }
 
         // sørger for at spilleren holder seg innenfor cavas
         if (this.position.y + this.height + this.velocity.y >= c_height) {
@@ -42,8 +50,6 @@ class Sprite {
             this.position.x + this.width + this.velocity.x >= c_width) {
             this.velocity.x = 0;
         }
-
-
     }
 
     attack() {

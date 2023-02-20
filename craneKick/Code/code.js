@@ -63,27 +63,28 @@ function keypress() {
     }
     if (a_key == true && d_key == false) {
         player.velocity.x = -5;
-
     }
     if (d_key == true && a_key == false) {
         player.velocity.x = 5;
-
     }
     if (a_key == false && d_key == false) {
         player.velocity.x = 0;
     }
     if (spacebar == true) {
-        player.attack();
+        spacebar = false;
+        player.attack()
+        console.log("spacebar")
     }
+
 }
 //hitbox detection osv.
 function hitdetection() {
-    if (player.attackPos.position.x + player.attackPos.width >= enemy.position.x &&
-        player.attackPos.position.x <= enemy.position.x + enemy.width &&
-        player.attackPos.position.y + player.attackPos.height >= enemy.position.y &&
-        player.attackPos.position.y <= enemy.position.y + enemy.height &&
+    if (player.attackPos.xPos + player.attackPos.width >= enemy.position.x &&
+        player.attackPos.xPos <= enemy.xPos + enemy.width &&
+        player.attackPos.yPos + player.attackPos.height >= enemy.position.y &&
+        player.attackPos.yPos <= enemy.position.y + enemy.height &&
         player.isAttacking == true) {
-        player.isAttacking = false;
+        player.isAttacking = false
         console.log("hit");
     }
 }
@@ -97,7 +98,8 @@ let player = new Sprite({
     velocity: {
         x: 0,
         y: 10
-    }
+    },
+    attackColor: "yellow"
 });
 
 // Definerer motstander og dens verdier
@@ -110,7 +112,7 @@ let enemy = new Sprite({
         x: 0,
         y: 10
     },
-    color: "blue"
+    color: "blue",
 });
 
 
