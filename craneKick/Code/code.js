@@ -81,7 +81,7 @@ function keypress() {
 function hitdetection() {
     if (player.attackPos.xPos + player.attackPos.width >= enemy.position.x &&
         player.attackPos.xPos <= enemy.position.x + enemy.width &&
-        player.attackPos.yPos + player.attackPos.height >= 100 &&
+        player.attackPos.yPos + player.attackPos.height >= enemy.position.y &&
         player.attackPos.yPos <= enemy.position.y + enemy.height &&
         player.isAttacking==true) {
         console.log("hit");
