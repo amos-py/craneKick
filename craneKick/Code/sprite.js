@@ -8,7 +8,7 @@ class Sprite {
         this.width = 50;
         this.attackPos = {
             xPos: this.position.x,
-            yPos: 100,
+            yPos: this.position.y,
             width: 100,
             height: 50,
         }
@@ -20,7 +20,7 @@ class Sprite {
         ctx.fillStyle = this.color;
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
 
-        //attack
+        //attack box
         ctx.fillStyle = "yellow";
         ctx.fillRect(this.attackPos.xPos, this.position.y,
             this.attackPos.width, this.attackPos.height);
@@ -32,6 +32,7 @@ class Sprite {
         this.position.x = this.position.x + this.velocity.x;
         this.position.y = this.position.y + this.velocity.y;
 
+        // bytte sider ved direksjon
         if (this.velocity.x <= -5) {
             this.attackPos.xPos = this.position.x - this.width;
         }
