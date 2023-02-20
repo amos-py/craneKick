@@ -35,9 +35,11 @@ class Sprite {
         // bytte sider ved direksjon
         if (this.velocity.x <= -5) {
             this.attackPos.xPos = this.position.x - this.width;
+            this.attackPos.yPos = this.position.y;
         }
         if (this.velocity.x >= 5) {
             this.attackPos.xPos = this.position.x;
+            this.attackPos.yPos = this.position.y;
         }
 
         // sørger for at spilleren holder seg innenfor cavas
