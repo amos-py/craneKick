@@ -21,6 +21,7 @@ let gravity = 1;
 let playerSpeed = 5;
 let enemyRange = 25;
 let enemySpeed = 1;
+let enemyCanAttack = false;
 
 function randint(max) {
     return Math.floor(Math.random() * max);
@@ -106,8 +107,9 @@ function enemyBehavior() {
         enemy.attackPos.xPos <= player.position.x + player.width &&
         enemy.attackPos.yPos + enemy.attackPos.height >= player.height &&
         enemy.attackPos.yPos <= player.position.y + player.height &&
-        enemy.isAttacking == true) {
+        enemy.isAttacking == true && enemyCanAttack == true) {
         enemy.isAttacking = false;
+        enemyCanAttack = false;
         console.log("enemy hit");
     }
 
@@ -118,6 +120,8 @@ function enemyBehavior() {
         enemy.velocity.x = enemySpeed;
     } else {
         enemy.velocity.x = 0;
+        enemyCanAttack = true;
+        enemy.attack();
     }
 }
 // Definerer spilleren og dens verdier
