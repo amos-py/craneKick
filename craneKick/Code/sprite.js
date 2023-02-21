@@ -22,7 +22,7 @@ class Sprite {
 
         //attack box
         ctx.fillStyle = "yellow";
-        ctx.fillRect(this.attackPos.xPos, this.position.y,
+        ctx.fillRect(this.attackPos.xPos, this.attackPos.yPos,
             this.attackPos.width, this.attackPos.height);
     }
 
@@ -31,6 +31,7 @@ class Sprite {
         this.draw()
         this.position.x = this.position.x + this.velocity.x;
         this.position.y = this.position.y + this.velocity.y;
+        this.attackPos.yPos= this.position.y;
 
         // bytte sider ved direksjon
         if (this.velocity.x < 0) {
@@ -49,7 +50,7 @@ class Sprite {
             this.velocity.y += gravity;
         }
         // prøvde å gjøre samme for høyre og venstre men d bæsj
-        if (this.position.x + this.width + this.velocity.x <= 0 ||
+        if (this.position.x - this.velocity.x <= 0 ||
             this.position.x + this.width + this.velocity.x >= c_width) {
             this.velocity.x = 0;
         }
@@ -58,7 +59,15 @@ class Sprite {
     attack() {
         this.isAttacking = true;
         setTimeout(() => {
-            this.isAttacking = false
+            this.isAttacking = false;
         }, 500)
+    }
+    crouch(){
+        this.height = 90;
+        this.attackPos.yPos = this.position.y + this.height/2;
+        setTimeout(() => {
+            this.attackPos.yPos = this.position.y;
+            this.height = 150;
+        }, 100)
     }
 }

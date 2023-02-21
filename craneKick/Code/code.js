@@ -17,7 +17,10 @@ let spacebar = false;
 // Definerer tyngdekraft
 let gravity = 1;
 
+//player n enemy stats
+let playerSpeed = 5;
 let enemyRange = 25;
+let enemySpeed = 1;
 
 function randint(max) {
     return Math.floor(Math.random() * max);
@@ -64,16 +67,19 @@ document.onkeyup = function (event) {
 //alle button presses som me trenge
 function keypress() {
     if (w_key == true) {
-        player.velocity.y = -5;
+        player.velocity.y = playerSpeed * -1;
     }
     if (a_key == true && d_key == false) {
-        player.velocity.x = -5;
+        player.velocity.x = playerSpeed * -1;
     }
     if (d_key == true && a_key == false) {
-        player.velocity.x = 5;
+        player.velocity.x = playerSpeed;
     }
     if (a_key == false && d_key == false) {
         player.velocity.x = 0;
+    }
+    if (s_key == true && w_key == false) {
+        player.crouch();
     }
     if (spacebar == true) {
         player.attack()
@@ -83,7 +89,6 @@ function keypress() {
 
 }
 //hitbox detection osv.
-
 function playerHitdetection() {
     //player hit detection
     if (player.attackPos.xPos + player.attackPos.width >= enemy.position.x &&
@@ -102,18 +107,17 @@ function enemyBehavior() {
         enemy.attackPos.yPos + enemy.attackPos.height >= player.height &&
         enemy.attackPos.yPos <= player.position.y + player.height &&
         enemy.isAttacking == true) {
-        console.log("enemy has hit");
-        enemy.isAttacking = false
+        enemy.isAttacking = false;
+        console.log("enemy hit");
     }
 
     // move toward player
     if (enemy.attackPos.xPos - enemyRange >= player.position.x) {
-        enemy.velocity.x = -1;
+        enemy.velocity.x = enemySpeed * -1;
     } else if (enemy.attackPos.xPos + enemy.attackPos.width + enemyRange <= player.position.x + player.width) {
-        enemy.velocity.x = 1;
+        enemy.velocity.x = enemySpeed;
     } else {
         enemy.velocity.x = 0;
-        enemy.attack();
     }
 }
 // Definerer spilleren og dens verdier
