@@ -17,6 +17,8 @@ let spacebar = false;
 // Definerer tyngdekraft
 let gravity = 1;
 
+let enemyRange = 25;
+
 function randint(max) {
     return Math.floor(Math.random() * max);
 }
@@ -82,7 +84,7 @@ function keypress() {
 }
 //hitbox detection osv.
 
-function hitdetection() {
+function playerHitdetection() {
     //player hit detection
     if (player.attackPos.xPos + player.attackPos.width >= enemy.position.x &&
         player.attackPos.xPos <= enemy.position.x + enemy.width &&
@@ -93,7 +95,7 @@ function hitdetection() {
         player.isAttacking = false
     }
 }
-function enemybehavior() {
+function enemyBehavior() {
     //enemy hit detection
     if (enemy.attackPos.xPos + enemy.attackPos.width >= player.position.x &&
         enemy.attackPos.xPos <= player.position.x + player.width &&
@@ -104,13 +106,14 @@ function enemybehavior() {
         enemy.isAttacking = false
     }
 
-    // move left toward player
-    if (enemy.attackPos.xPos >= player.position.x) {
+    // move toward player
+    if (enemy.attackPos.xPos - enemyRange >= player.position.x) {
         enemy.velocity.x = -1;
-    } else if (enemy.attackPos.xPos + enemy.attackPos.width <= player.position.x + player.width) {
+    } else if (enemy.attackPos.xPos + enemy.attackPos.width + enemyRange <= player.position.x + player.width) {
         enemy.velocity.x = 1;
     } else {
         enemy.velocity.x = 0;
+        enemy.attack();
     }
 }
 // Definerer spilleren og dens verdier
@@ -149,8 +152,8 @@ function animate() {
 
     //funksjoner
     keypress();
-    hitdetection();
-    enemybehavior();
+    playerHitdetection();
+    enemyBehavior();
 
 
     player.updatePosition();
