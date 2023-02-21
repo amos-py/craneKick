@@ -102,24 +102,20 @@ function enemybehavior() {
         enemy.isAttacking == true) {
         console.log("enemy has hit");
         enemy.isAttacking = false
-    } else if (enemy.position.x >= player.position.x) {
+
+        //enemy move towards player
+    } else if (enemy.attackPos.xPos >= player.position.x) {
         if (randint(100) >= 5) {
-            setTimeout(() => {
                 enemy.velocity.x = -1;
-            }, 3000);
         } else {
-            setTimeout(() =>{
-                enemy.velocity.x=1;
-            }, 2000);
-
+            enemy.velocity.x = 0;
         }
-    } else if (enemy.position.x <= player.position.x) {
-        setTimeout(() => {
+    } else if (enemy.attackPos.xPos + enemy.attackPos.width <= player.position.x + player.width) {
             enemy.velocity.x = 1;
-        }, 500);
 
+    } else {
+        enemy.velocity.x = 0;
     }
-    //enemy move towards player
 }
 // Definerer spilleren og dens verdier
 let player = new Sprite({
