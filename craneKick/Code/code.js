@@ -113,11 +113,11 @@ function enemybehavior() {
             }, 2000);
 
         }
-
     } else if (enemy.position.x <= player.position.x) {
-        setTimeout(
-            enemy.velocity.x = 1
-            , 500);
+        setTimeout(() => {
+            enemy.velocity.x = 1;
+        }, 500);
+
     }
     //enemy move towards player
 }
