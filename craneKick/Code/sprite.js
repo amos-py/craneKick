@@ -33,11 +33,11 @@ class Sprite {
         this.position.y = this.position.y + this.velocity.y;
 
         // bytte sider ved direksjon
-        if (this.velocity.x <= -5) {
+        if (this.velocity.x < 0) {
             this.attackPos.xPos = this.position.x - this.width;
             this.attackPos.yPos = this.position.y;
         }
-        if (this.velocity.x >= 5) {
+        if (this.velocity.x > 0) {
             this.attackPos.xPos = this.position.x;
             this.attackPos.yPos = this.position.y;
         }

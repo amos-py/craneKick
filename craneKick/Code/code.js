@@ -17,6 +17,9 @@ let spacebar = false;
 // Definerer tyngdekraft
 let gravity = 1;
 
+function randint(max) {
+    return Math.floor(Math.random() * max);
+}
 
 // Kode for bevegelse gjennom wasd
 document.onkeydown = function (event) {
@@ -78,17 +81,46 @@ function keypress() {
 
 }
 //hitbox detection osv.
+
 function hitdetection() {
+    //player hit detection
     if (player.attackPos.xPos + player.attackPos.width >= enemy.position.x &&
         player.attackPos.xPos <= enemy.position.x + enemy.width &&
-        player.attackPos.yPos + player.attackPos.height >= enemy.position.y &&
+        player.attackPos.yPos + player.attackPos.height >= enemy.height &&
         player.attackPos.yPos <= enemy.position.y + enemy.height &&
-        player.isAttacking==true) {
+        player.isAttacking == true) {
         console.log("hit");
         player.isAttacking = false
     }
 }
+function enemybehavior() {
+    //enemy hit detection
+    if (enemy.attackPos.xPos + enemy.attackPos.width >= player.position.x &&
+        enemy.attackPos.xPos <= player.position.x + player.width &&
+        enemy.attackPos.yPos + enemy.attackPos.height >= player.height &&
+        enemy.attackPos.yPos <= player.position.y + player.height &&
+        enemy.isAttacking == true) {
+        console.log("enemy has hit");
+        enemy.isAttacking = false
+    } else if (enemy.position.x >= player.position.x) {
+        if (randint(100) >= 5) {
+            setTimeout(() => {
+                enemy.velocity.x = -1;
+            }, 3000);
+        } else {
+            setTimeout(() =>{
+                enemy.velocity.x=1;
+            }, 2000);
 
+        }
+
+    } else if (enemy.position.x <= player.position.x) {
+        setTimeout(
+            enemy.velocity.x = 1
+            , 500);
+    }
+    //enemy move towards player
+}
 // Definerer spilleren og dens verdier
 let player = new Sprite({
     position: {
@@ -126,6 +158,7 @@ function animate() {
     //funksjoner
     keypress();
     hitdetection();
+    enemybehavior();
 
 
     player.updatePosition();
