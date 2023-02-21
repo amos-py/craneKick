@@ -102,17 +102,13 @@ function enemybehavior() {
         enemy.isAttacking == true) {
         console.log("enemy has hit");
         enemy.isAttacking = false
+    }
 
-        //enemy move towards player
-    } else if (enemy.attackPos.xPos >= player.position.x) {
-        if (randint(100) >= 5) {
-                enemy.velocity.x = -1;
-        } else {
-            enemy.velocity.x = 0;
-        }
+    // move left toward player
+    if (enemy.attackPos.xPos >= player.position.x) {
+        enemy.velocity.x = -1;
     } else if (enemy.attackPos.xPos + enemy.attackPos.width <= player.position.x + player.width) {
-            enemy.velocity.x = 1;
-
+        enemy.velocity.x = 1;
     } else {
         enemy.velocity.x = 0;
     }
