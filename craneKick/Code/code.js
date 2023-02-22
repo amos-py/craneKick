@@ -36,9 +36,7 @@ document.onkeydown = function (event) {
 }
 
 // spiller av lydfiler på tastetrykk
-// import sound from '../audio/sound.mp3'
-// const audio = new Audio(sound)
-// audio.play()
+
 
 document.addEventListener('keydown', function(w) {
     if (event.key == "w") {
@@ -114,8 +112,8 @@ function animate() {
 
     //funksjoner
     keypress();
-    playerHitdetection();
-    enemyBehavior();
+    // playerHitdetection();
+    // enemyBehavior();
 
 
     player.updatePosition();
