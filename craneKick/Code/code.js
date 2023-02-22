@@ -7,22 +7,18 @@ let c_height = canvasRoom.height = 576;
 ctx.fillRect(0, 0, c_width, c_height)
 
 // Definerer boolean variabler for movement
-let w_key = false;
 let a_key = false;
-let s_key = false;
 let d_key = false;
 let spacebar = false;
+let player_grounded = true;
 
 // Definerer tyngdekraft
-let gravity = 1;
+let gravity = 0.981;
 
 // Kode for bevegelse gjennom wasd
 document.onkeydown = function (event) {
-    if (event.key == "w") {
-        w_key = true;
-    }
-    if (event.key == "s") {
-        s_key = true;
+    if (event.key == " ") {
+        spacebar = true;
     }
     if (event.key == "a") {
         a_key = true;
@@ -48,11 +44,8 @@ document.addEventListener('keydown', function(w) {
 
 
 document.onkeyup = function (event) {
-    if (event.key == "w") {
-        w_key = false;
-    }
-    if (event.key == "s") {
-        s_key = false;
+    if (event.key == " ") {
+        spacebar = false;
     }
     if (event.key == "a") {
         a_key = false;
@@ -63,20 +56,30 @@ document.onkeyup = function (event) {
 }
 
 function keypress(){
-    if (w_key==true){
-        player.velocity.y=-7
-    }
+
     if (a_key==true && d_key==false){
-        player.velocity.x=-7
+        player.velocity.x=-7;
 
     }
     if (d_key==true && a_key==false){
-        player.velocity.x=7
+        player.velocity.x=7;
 
     }
     if (a_key==false && d_key==false){
-        player.velocity.x=0
+        player.velocity.x=0;
     }
+
+    if (spacebar==true && player_grounded==true) {
+        player.velocity.y = -12;
+    }
+
+}
+
+function playerJump() {
+    if (player.position.y + player.height + player.velocity.y >= c_height) {
+        player_grounded = true;
+    }
+    else {player_grounded = false;}
 }
 
 // Definerer spilleren og dens verdier
@@ -114,8 +117,9 @@ function animate() {
 
     //funksjoner
     keypress();
-    playerHitdetection();
-    enemyBehavior();
+    // playerHitdetection();
+    // enemyBehavior();
+    playerJump()
 
 
     player.updatePosition();
