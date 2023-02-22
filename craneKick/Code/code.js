@@ -1,6 +1,5 @@
 let canvasRoom = document.getElementById("canvasRoom");
 
-
 // Sett opp canvas
 let ctx = canvasRoom.getContext("2d");
 let c_width = canvasRoom.width = 1024;
@@ -15,7 +14,6 @@ let d_key = false;
 
 // Definerer tyngdekraft
 let gravity = 1;
-
 
 // Kode for bevegelse gjennom wasd
 document.onkeydown = function (event) {
@@ -33,6 +31,17 @@ document.onkeydown = function (event) {
    }   
 }
 
+// spiller av lydfiler på tastetrykk
+// import sound from '../audio/sound.mp3'
+// const audio = new Audio(sound)
+// audio.play()
+
+document.addEventListener('keydown', function(w) {
+    if (event.key == "w") {
+      document.getElementById("audioJump").play();
+    }
+  });
+
 
 document.onkeyup = function (event) {
     if (event.key == "w") {
@@ -48,17 +57,6 @@ document.onkeyup = function (event) {
         d_key = false;
    }   
 }
-
-// spiller av lydfiler på tastetrykk
-// import sound from '../audio/sound.mp3'
-// const audio = new Audio(sound)
-// audio.play()
-
-document.addEventListener('keydown', function(w) {
-    if (event.key == "w") {
-      document.getElementById("audioJump").play();
-    }
-  });
 
 // Definerer spilleren og dens verdier
 let player = new Sprite( {
