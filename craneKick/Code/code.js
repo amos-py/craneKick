@@ -49,7 +49,16 @@ document.onkeyup = function (event) {
    }   
 }
 
+// spiller av lydfiler på tastetrykk
+// import sound from '../audio/sound.mp3'
+// const audio = new Audio(sound)
+// audio.play()
 
+document.addEventListener('keydown', function(w) {
+    if (event.key == "w") {
+      document.getElementById("audioJump").play();
+    }
+  });
 
 // Definerer spilleren og dens verdier
 let player = new Sprite( {
@@ -75,6 +84,7 @@ let enemy = new Sprite( {
     }
 }); 
 player.draw();
+
 // funksjon som starter programmet og sørger for at der fortsatter til det stoppes.
 function animate() {
     window.requestAnimationFrame(animate);
