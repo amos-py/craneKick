@@ -82,9 +82,9 @@ function keypress() {
         player.crouch();
     }
     if (spacebar == true && player_grounded == true) {
+        player.velocity.y = -12;
         jumpAudio();
         audioJump.cloneNode().play();
-        player.velocity.y = -12;
         spacebar = false;
         console.log("spacebar")
     }
