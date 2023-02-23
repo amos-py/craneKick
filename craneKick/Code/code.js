@@ -92,12 +92,9 @@ function keypress() {
         enemy.attack()
     }
     if (spacebar == true && player_grounded == true) {
-        player.velocity.y = -12;
         jumpAudio();
         audioJump.cloneNode().play();
         player.velocity.y = -12;
-        spacebar = false;
-        console.log("spacebar")
     }
 
 }
@@ -169,7 +166,6 @@ let enemy = new Sprite({
         y: 10
     }
 }); 
-player.draw();
 
 // funksjon som starter programmet og sørger for at der fortsatter til det stoppes.
 function animate() {
