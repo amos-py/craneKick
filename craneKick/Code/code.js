@@ -198,8 +198,8 @@ function animate() {
 
     //funksjoner
     keypress();
-    // playerHitdetection();
-    // enemyBehavior();
+    playerHitdetection();
+    enemyBehavior();
     playerJump()
 
     player.updatePosition();
