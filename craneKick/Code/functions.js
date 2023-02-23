@@ -1,7 +1,5 @@
 // player animations
 
-
-
 // spiller av lydfiler på tastetrykk
 function jumpAudio () {
     document.addEventListener("keydown", playAudio);
@@ -77,7 +75,7 @@ function keypress() {
     if (spacebar == true && player_grounded == true) {
         jumpAudio();
         audioJump.cloneNode().play();
-        player.velocity.y = -12;
+        player.velocity.y = -30;
     }
 
 }//hitbox detection osv.
