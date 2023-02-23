@@ -17,7 +17,7 @@ let k_key = false;
 let gravity = 0.981;
 
 //player n enemy stats
-let playerSpeed = 12;
+let playerSpeed = 5;
 let enemyRange = 25;
 let enemySpeed = 1;
 let enemyCanAttack = false;
