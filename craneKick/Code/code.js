@@ -41,25 +41,14 @@ document.onkeydown = function (event) {
     }
 }
 // spiller av lydfiler på tastetrykk
-// let jumpKeyPressed = {},
-//     audio = document.getElementById("audioJump");
+function jumpAudio () {
+    document.addEventListener("keydown", function(w) {
+        if (event.key == "w") {
+          document.getElementById("audioJump").play();
+        }
+      });
+}
 
-// document.onkeydown = function (w) {
-//     if (pressed[e.which]) return;
-//     pressed[e.which] = e.timeStamp;
-//     };
-
-//     audio.volume = volume;
-//     audio.play();
-    
-//     pressed[e.which] = 0;
-
-// 
-document.addEventListener("keydown", function(w) {
-    if (event.key == "w") {
-      document.getElementById("audioJump").play();
-    }
-  });
 
 
   document.onkeyup = function (event) {
@@ -81,7 +70,7 @@ document.addEventListener("keydown", function(w) {
 }
 
 
-//alle button presses som me trenge
+// alle button presses som me trenge
 function keypress() {
     if (w_key == true) {
         player.velocity.y = playerSpeed * -1;
@@ -144,6 +133,7 @@ function enemyBehavior() {
 function playerJump() {
     if (player.position.y + player.height + player.velocity.y >= c_height) {
         player_grounded = true;
+        jumpAudio();
     }
     else {player_grounded = false;}
 }
