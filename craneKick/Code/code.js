@@ -7,11 +7,11 @@ let c_height = canvasRoom.height = 576;
 ctx.fillRect(0, 0, c_width, c_height)
 
 // Definerer boolean variabler for movement
-let w_key = false;
 let a_key = false;
 let s_key = false;
 let d_key = false;
 let spacebar = false;
+let k_key = false;
 
 // Definerer tyngdekraft
 let gravity = 0.981;
@@ -24,9 +24,7 @@ let enemyCanAttack = false;
 
 // Kode for bevegelse gjennom wasd
 document.onkeydown = function (event) {
-    if (event.key == "w") {
-        w_key = true;
-    }
+
     if (event.key == "s") {
         s_key = true;
     }
@@ -42,19 +40,15 @@ document.onkeydown = function (event) {
 }
 // spiller av lydfiler på tastetrykk
 function jumpAudio () {
-    document.addEventListener("keydown", function(w) {
+    document.addEventListener("keydown" {
         if (event.key == "w") {
           document.getElementById("audioJump").play();
         }
       });
 }
 
-
-
   document.onkeyup = function (event) {
-    if (event.key == "w") {
-        w_key = false;
-    }
+
     if (event.key == "s") {
         s_key = false;
     }
@@ -72,9 +66,7 @@ function jumpAudio () {
 
 // alle button presses som me trenge
 function keypress() {
-    if (w_key == true) {
-        player.velocity.y = playerSpeed * -1;
-    }
+
     if (a_key == true && d_key == false) {
         player.velocity.x = playerSpeed * -1;
     }
@@ -87,8 +79,10 @@ function keypress() {
     if (s_key == true && w_key == false) {
         player.crouch();
     }
-    if (spacebar == true) {
-        player.attack()
+    if (spacebar == true && player_grounded == true) {
+        jumpAudio();
+        audioJump.cloneNode().play();
+        player.velocity.y = -12;
         spacebar = false;
         console.log("spacebar")
     }
@@ -130,10 +124,10 @@ function enemyBehavior() {
     }
 }
 
+// funksjon for hopping 
 function playerJump() {
     if (player.position.y + player.height + player.velocity.y >= c_height) {
         player_grounded = true;
-        jumpAudio();
     }
     else {player_grounded = false;}
 }
