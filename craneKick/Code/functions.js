@@ -1,5 +1,7 @@
 // player animations
 
+
+
 // spiller av lydfiler på tastetrykk
 function jumpAudio () {
     document.addEventListener("keydown", playAudio);
