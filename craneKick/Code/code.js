@@ -41,18 +41,18 @@ document.onkeydown = function (event) {
     }
 }
 // spiller av lydfiler på tastetrykk
-let jumpKeyPressed = {},
-    audio = document.getElementById("audioJump");
+// let jumpKeyPressed = {},
+//     audio = document.getElementById("audioJump");
 
-document.onkeydown = function (w) {
-    if (pressed[e.which]) return;
-    pressed[e.which] = e.timeStamp;
-    };
+// document.onkeydown = function (w) {
+//     if (pressed[e.which]) return;
+//     pressed[e.which] = e.timeStamp;
+//     };
 
-    audio.volume = volume;
-    audio.play();
+//     audio.volume = volume;
+//     audio.play();
     
-    pressed[e.which] = 0;
+//     pressed[e.which] = 0;
 
 // 
 document.addEventListener('keydown', function(w) {
