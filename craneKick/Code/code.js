@@ -90,6 +90,7 @@ function keypress() {
     }
     if (k_key == true) {
         enemy.attack()
+        k_key == false;
     }
     if (spacebar == true && player_grounded == true) {
         jumpAudio();
