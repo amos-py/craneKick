@@ -40,12 +40,14 @@ document.onkeydown = function (event) {
 }
 // spiller av lydfiler på tastetrykk
 function jumpAudio () {
-    document.addEventListener("keydown" {
-        if (event.key == "w") {
-          document.getElementById("audioJump").play();
-        }
-      });
+    document.addEventListener("keydown", playAudio);
 }
+
+function playAudio(event) {
+    if (event.key == " ") {
+      document.getElementById("audioJump");
+    }
+  }
 
   document.onkeyup = function (event) {
 
