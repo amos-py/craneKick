@@ -7,10 +7,11 @@ let c_height = canvasRoom.height = 576;
 ctx.fillRect(0, 0, c_width, c_height)
 
 // Definerer boolean variabler for movement
+let w_key = false;
 let a_key = false;
+let s_key = false;
 let d_key = false;
 let spacebar = false;
-let player_grounded = true;
 
 // Definerer tyngdekraft
 let gravity = 0.981;
@@ -21,15 +22,13 @@ let enemyRange = 25;
 let enemySpeed = 1;
 let enemyCanAttack = false;
 
-function randint(max) {
-    return Math.floor(Math.random() * max);
-}
-
-
 // Kode for bevegelse gjennom wasd
 document.onkeydown = function (event) {
-    if (event.key == " ") {
-        spacebar = true;
+    if (event.key == "w") {
+        w_key = true;
+    }
+    if (event.key == "s") {
+        s_key = true;
     }
     if (event.key == "a") {
         a_key = true;
@@ -41,20 +40,19 @@ document.onkeydown = function (event) {
         spacebar = true;
     }
 }
-
 // spiller av lydfiler på tastetrykk
-let jumpKeyPressed = {},
-    audio = document.getElementById("audioJump");
+// let jumpKeyPressed = {},
+//     audio = document.getElementById("audioJump");
 
-document.onkeydown = function (w) {
-    if (pressed[e.which]) return;
-    pressed[e.which] = e.timeStamp;
-    };
+// document.onkeydown = function (w) {
+//     if (pressed[e.which]) return;
+//     pressed[e.which] = e.timeStamp;
+//     };
 
-    audio.volume = volume;
-    audio.play();
+//     audio.volume = volume;
+//     audio.play();
     
-    pressed[e.which] = 0;
+//     pressed[e.which] = 0;
 
 // 
 document.addEventListener('keydown', function(w) {
@@ -64,37 +62,24 @@ document.addEventListener('keydown', function(w) {
   });
 
 
-document.onkeyup = function (event) {
-    if (event.key == " ") {
-        spacebar = false;
+  document.onkeyup = function (event) {
+    if (event.key == "w") {
+        w_key = false;
+    }
+    if (event.key == "s") {
+        s_key = false;
     }
     if (event.key == "a") {
         a_key = false;
     }
     if (event.key == "d") {
         d_key = false;
-   }   
+    }
+    if (event.key == " ") {
+        spacebar = false;
+    }
 }
 
-function keypress(){
-
-    if (a_key==true && d_key==false){
-        player.velocity.x=-7;
-
-    }
-    if (d_key==true && a_key==false){
-        player.velocity.x=7;
-
-    }
-    if (a_key==false && d_key==false){
-        player.velocity.x=0;
-    }
-
-    if (spacebar==true && player_grounded==true) {
-        player.velocity.y = -12;
-    }
-
-}
 
 //alle button presses som me trenge
 function keypress() {
