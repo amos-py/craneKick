@@ -55,7 +55,7 @@ document.onkeydown = function (event) {
 //     pressed[e.which] = 0;
 
 // 
-document.addEventListener('keydown', function(w) {
+document.addEventListener("keydown", function(w) {
     if (event.key == "w") {
       document.getElementById("audioJump").play();
     }
