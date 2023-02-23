@@ -78,7 +78,7 @@ function keypress() {
     if (a_key == false && d_key == false) {
         player.velocity.x = 0;
     }
-    if (s_key == true && w_key == false) {
+    if (s_key == true) {
         player.crouch();
     }
     if (spacebar == true && player_grounded == true) {
