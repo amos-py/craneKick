@@ -95,9 +95,6 @@ function keypress() {
         jumpAudio();
         audioJump.cloneNode().play();
         player.velocity.y = -12;
-
-        spacebar = false;
-        console.log("spacebar")
     }
 
 }
@@ -186,6 +183,7 @@ function animate() {
 
     player.updatePosition();
     enemy.updatePosition();
+    // console.log(player_grounded)
 }
 
 animate()
