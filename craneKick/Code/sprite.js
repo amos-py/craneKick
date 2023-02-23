@@ -68,6 +68,7 @@ class Sprite {
         setTimeout(() => {
             this.attackPos.yPos = this.position.y;
             this.height = 150;
+            
         }, 100)
     }
 }
