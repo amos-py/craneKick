@@ -80,28 +80,6 @@ document.addEventListener('keydown', function(w) {
     }
 }
 
-function keypress() {
-    if (w_key == true) {
-        player.velocity.y = playerSpeed * -1;
-    }
-    if (a_key == true && d_key == false) {
-        player.velocity.x = playerSpeed * -1;
-    }
-    if (d_key == true && a_key == false) {
-        player.velocity.x = playerSpeed;
-    }
-    if (a_key == false && d_key == false) {
-        player.velocity.x = 0;
-    }
-    if (s_key == true && w_key == false) {
-        player.crouch();
-    }
-    if (spacebar == true) {
-        player.attack()
-        spacebar = false;
-        console.log("spacebar")
-    }
-}
 
 //alle button presses som me trenge
 function keypress() {
