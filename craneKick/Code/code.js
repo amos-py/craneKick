@@ -7,18 +7,28 @@ let c_height = canvasRoom.height = 576;
 ctx.fillRect(0, 0, c_width, c_height)
 
 // Definerer boolean variabler for movement
+let w_key = false;
 let a_key = false;
+let s_key = false;
 let d_key = false;
 let spacebar = false;
-let player_grounded = true;
 
 // Definerer tyngdekraft
 let gravity = 0.981;
 
+//player n enemy stats
+let playerSpeed = 5;
+let enemyRange = 25;
+let enemySpeed = 1;
+let enemyCanAttack = false;
+
 // Kode for bevegelse gjennom wasd
 document.onkeydown = function (event) {
-    if (event.key == " ") {
-        spacebar = true;
+    if (event.key == "w") {
+        w_key = true;
+    }
+    if (event.key == "s") {
+        s_key = true;
     }
     if (event.key == "a") {
         a_key = true;
@@ -30,7 +40,6 @@ document.onkeydown = function (event) {
         spacebar = true;
     }
 }
-
 // spiller av lydfiler på tastetrykk
 
 
@@ -41,36 +50,45 @@ document.addEventListener('keydown', function(w) {
   });
 
 
-document.onkeyup = function (event) {
-    if (event.key == " ") {
-        spacebar = false;
+  document.onkeyup = function (event) {
+    if (event.key == "w") {
+        w_key = false;
+    }
+    if (event.key == "s") {
+        s_key = false;
     }
     if (event.key == "a") {
         a_key = false;
     }
     if (event.key == "d") {
         d_key = false;
-   }   
+    }
+    if (event.key == " ") {
+        spacebar = false;
+    }
 }
 
-function keypress(){
-
-    if (a_key==true && d_key==false){
-        player.velocity.x=-7;
-
+function keypress() {
+    if (w_key == true) {
+        player.velocity.y = playerSpeed * -1;
     }
-    if (d_key==true && a_key==false){
-        player.velocity.x=7;
-
+    if (a_key == true && d_key == false) {
+        player.velocity.x = playerSpeed * -1;
     }
-    if (a_key==false && d_key==false){
-        player.velocity.x=0;
+    if (d_key == true && a_key == false) {
+        player.velocity.x = playerSpeed;
     }
-
-    if (spacebar==true && player_grounded==true) {
-        player.velocity.y = -12;
+    if (a_key == false && d_key == false) {
+        player.velocity.x = 0;
     }
-
+    if (s_key == true && w_key == false) {
+        player.crouch();
+    }
+    if (spacebar == true) {
+        player.attack()
+        spacebar = false;
+        console.log("spacebar")
+    }
 }
 
 function playerJump() {
@@ -80,6 +98,40 @@ function playerJump() {
     else {player_grounded = false;}
 }
 
+function playerHitdetection() {
+    //player hit detection
+    if (player.attackPos.xPos + player.attackPos.width >= enemy.position.x &&
+        player.attackPos.xPos <= enemy.position.x + enemy.width &&
+        player.attackPos.yPos + player.attackPos.height >= enemy.height &&
+        player.attackPos.yPos <= enemy.position.y + enemy.height &&
+        player.isAttacking == true) {
+        console.log("hit");
+        player.isAttacking = false
+    }
+}
+function enemyBehavior() {
+    //enemy hit detection
+    if (enemy.attackPos.xPos + enemy.attackPos.width >= player.position.x &&
+        enemy.attackPos.xPos <= player.position.x + player.width &&
+        enemy.attackPos.yPos + enemy.attackPos.height >= player.height &&
+        enemy.attackPos.yPos <= player.position.y + player.height &&
+        enemy.isAttacking == true && enemyCanAttack == true) {
+        enemy.isAttacking = false;
+        enemyCanAttack = false;
+        console.log("enemy hit");
+    }
+
+    // move toward player
+    if (enemy.attackPos.xPos - enemyRange >= player.position.x) {
+        enemy.velocity.x = enemySpeed * -1;
+    } else if (enemy.attackPos.xPos + enemy.attackPos.width + enemyRange <= player.position.x + player.width) {
+        enemy.velocity.x = enemySpeed;
+    } else {
+        enemy.velocity.x = 0;
+        enemyCanAttack = true;
+        enemy.attack();
+    }
+}
 // Definerer spilleren og dens verdier
 let player = new Sprite({
     position: {
@@ -115,8 +167,8 @@ function animate() {
 
     //funksjoner
     keypress();
-    // playerHitdetection();
-    // enemyBehavior();
+    playerHitdetection();
+    enemyBehavior();
     playerJump()
 
     player.updatePosition();
