@@ -37,6 +37,10 @@ document.onkeydown = function (event) {
     if (event.key == " ") {
         spacebar = true;
     }
+    if (event.key == "k") {
+        k_key = true;
+    }
+
 }
 // spiller av lydfiler på tastetrykk
 function jumpAudio () {
@@ -63,6 +67,9 @@ function playAudio(event) {
     if (event.key == " ") {
         spacebar = false;
     }
+    if (event.key == "k") {
+        k_key = false;
+    }
 }
 
 
@@ -81,10 +88,14 @@ function keypress() {
     if (s_key == true) {
         player.crouch();
     }
+    if (k_key == true) {
+        enemy.attack()
+    }
     if (spacebar == true && player_grounded == true) {
         player.velocity.y = -12;
         jumpAudio();
         audioJump.cloneNode().play();
+        player.velocity.y = -12;
         spacebar = false;
         console.log("spacebar")
     }
@@ -175,6 +186,7 @@ function animate() {
 
     player.updatePosition();
     enemy.updatePosition();
+    // console.log(player_grounded)
 }
 
 animate()
