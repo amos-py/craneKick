@@ -42,13 +42,16 @@ document.onkeydown = function (event) {
     }
 
 }
+// spiller av lydfiler på tastetrykk
+function jumpAudio () {
+    document.addEventListener("keydown", playAudio);
+}
 
-document.addEventListener('keydown', function(w) {
+function playAudio(event) {
     if (event.key == " ") {
-      document.getElementById("audioJump").play();
+      document.getElementById("audioJump");
     }
-  });
-
+  }
 
   document.onkeyup = function (event) {
 
@@ -70,7 +73,7 @@ document.addEventListener('keydown', function(w) {
 }
 
 
-//alle button presses som me trenge
+// alle button presses som me trenge
 function keypress() {
 
     if (a_key == true && d_key == false) {
@@ -82,13 +85,15 @@ function keypress() {
     if (a_key == false && d_key == false) {
         player.velocity.x = 0;
     }
-    if (s_key == true && w_key == false) {
+    if (s_key == true) {
         player.crouch();
     }
     if (k_key == true) {
         enemy.attack()
     }
     if (spacebar == true && player_grounded == true) {
+        jumpAudio();
+        audioJump.cloneNode().play();
         player.velocity.y = -12;
 
         spacebar = false;
@@ -132,6 +137,7 @@ function enemyBehavior() {
     }
 }
 
+// funksjon for hopping 
 function playerJump() {
     if (player.position.y + player.height + player.velocity.y >= c_height) {
         player_grounded = true;
