@@ -1,7 +1,7 @@
 class Sprite {
     position;
     velocity;
-    constructor({ position, velocity, color = "red" }) {
+    constructor({ position, velocity, color = "IndianRed" }) {
         this.position = position;
         this.velocity = velocity;
         this.height = 150;
@@ -15,13 +15,14 @@ class Sprite {
         this.isAttacking;
         this.color = color;
     }
+    
     // tegn spillerene 
     draw() {
         ctx.fillStyle = this.color;
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
 
         //attack box
-        ctx.fillStyle = "yellow";
+        ctx.fillStyle = "LightYellow";
         ctx.fillRect(this.attackPos.xPos, this.attackPos.yPos,
             this.attackPos.width, this.attackPos.height);
     }
@@ -49,6 +50,7 @@ class Sprite {
         } else {
             this.velocity.y += gravity;
         }
+
         // prøvde å gjøre samme for høyre og venstre men d bæsj
         if (this.position.x - this.velocity.x <= 0 ||
             this.position.x + this.width + this.velocity.x >= c_width) {

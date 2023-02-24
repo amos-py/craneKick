@@ -114,6 +114,7 @@ function playerHitdetection() {
         player.isAttacking = false
     }
 }
+
 function enemyBehavior() {
     //enemy hit detection
     if (enemy.attackPos.xPos + enemy.attackPos.width >= player.position.x &&
@@ -137,4 +138,3 @@ function enemyBehavior() {
         enemy.attack();
     }
 }
-
