@@ -66,15 +66,20 @@ function extraJump() {
     if (player_grounded == true) {
         playerExtraJump = playerExtraJumpValue;
     }
-    if (spacebar == true && player_grounded == false && player.velocity.y > -5 && playerExtraJump >= 1) { 
-        jumpAudio();
-        audioJump.cloneNode().play();
-        player.velocity.y = -12;
-        console.log(playerExtraJump);
-        console.log(player_grounded)
-        playerExtraJump--;
-    }
-}
+
+    // document.onkeydown = function (event) {
+    //     if (event.key = " "){
+            if (spacebar == true && player_grounded == false && player.velocity.y > -5 && playerExtraJump >= 1) { 
+                jumpAudio();
+                audioJump.cloneNode().play();
+                player.velocity.y = -12;
+                playerExtraJump--
+                console.log("jump");
+            }
+        }
+    //     }
+    // }
+
 
 
 // funksjon for hopping 

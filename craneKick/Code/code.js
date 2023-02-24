@@ -39,8 +39,6 @@ function animate() {
 
     player.updatePosition();
     enemy.updatePosition();
-    console.log(player_grounded)
-    // console.log(playerExtraJumpValeu)
 }
 
 animate()
