@@ -20,7 +20,7 @@ function playOhYeahAudio(event) {
     if (event.key == "k") {
       document.getElementById("ohYeah").play();
     }
-  }
+}
 
   // Kode for bevegelse gjennom wasd
 document.onkeydown = function (event) {
@@ -43,11 +43,7 @@ document.onkeydown = function (event) {
 
 }
 
-if (player_grounded == true) {
-    playerExtraJump = playerExtraJumpValeu;
-}
-
-  document.onkeyup = function (event) {
+document.onkeyup = function (event) {
 
     if (event.key == "s") {
         s_key = false;
@@ -65,6 +61,21 @@ if (player_grounded == true) {
         k_key = false;
     }
 }
+
+function extraJump() {
+    if (player_grounded == true) {
+        playerExtraJump = playerExtraJumpValue;
+    }
+    if (spacebar == true && player_grounded == false && player.velocity.y > -5 && playerExtraJump >= 1) { 
+        jumpAudio();
+        audioJump.cloneNode().play();
+        player.velocity.y = -12;
+        console.log(playerExtraJump);
+        console.log(player_grounded)
+        playerExtraJump--;
+    }
+}
+
 
 // funksjon for hopping 
 function playerJump() {
@@ -124,7 +135,7 @@ function enemyBehavior() {
         enemy.isAttacking == true && enemyCanAttack == true) {
         enemy.isAttacking = false;
         enemyCanAttack = false;
-        console.log("enemy hit");
+        // console.log("enemy hit");
     }
 
     // move toward player
