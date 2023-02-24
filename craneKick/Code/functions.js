@@ -12,6 +12,16 @@ function playAudio(event) {
     }
   }
 
+function ohYeahAudio () {
+    document.addEventListener("keydown", playOhYeahAudio);
+}
+
+function playOhYeahAudio(event) {
+    if (event.key == "k") {
+      document.getElementById("ohYeah").play();
+    }
+  }
+
   // Kode for bevegelse gjennom wasd
 document.onkeydown = function (event) {
 
@@ -74,6 +84,9 @@ function keypress() {
     }
     if (k_key == true) {
         enemy.attack()
+        ohYeahAudio()
+        ohYeah.cloneNode().play();
+
         k_key == false;
     }
     if (spacebar == true && player_grounded == true) {
@@ -82,17 +95,7 @@ function keypress() {
         player.velocity.y = -12;
     }
 
-}
-
-    // funksjon for hopping 
-    function playerJump() {
-        if (player.position.y + player.height + player.velocity.y >= c_height) {
-            player_grounded = true;
-        }
-        else {player_grounded = false;}
-    }
-
-//hitbox detection osv.
+} //hitbox detection osv.
 function playerHitdetection() {
     //player hit detection
     if (player.attackPos.xPos + player.attackPos.width >= enemy.position.x &&

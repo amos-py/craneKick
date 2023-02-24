@@ -43,7 +43,7 @@ class Sprite {
             this.attackPos.yPos = this.position.y;
         }
 
-        // sørger for at spilleren holder seg innenfor cavas
+        // sørger for at spilleren holder seg innenfor canvas
         if (this.position.y + this.height + this.velocity.y >= c_height) {
             this.velocity.y = 0;
         } else {
