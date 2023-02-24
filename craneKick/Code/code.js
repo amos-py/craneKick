@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 let canvasRoom = document.getElementById("canvasRoom");
 
 // Sett opp canvas
@@ -144,8 +143,6 @@ function playerJump() {
     else {player_grounded = false;}
 }
 
-=======
->>>>>>> a94693d94b07a0afd08dd5aedcbdeb433e1f6bc0
 // Definerer spilleren og dens verdier
 let player = new Sprite({
     position: {

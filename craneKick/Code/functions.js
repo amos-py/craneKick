@@ -96,21 +96,7 @@ function keypress() {
         player.velocity.y = -12;
     }
 
-<<<<<<< HEAD
 } //hitbox detection osv.
-=======
-}
-
-    // funksjon for hopping 
-    function playerJump() {
-        if (player.position.y + player.height + player.velocity.y >= c_height) {
-            player_grounded = true;
-        }
-        else {player_grounded = false;}
-    }
-
-//hitbox detection osv.
->>>>>>> a94693d94b07a0afd08dd5aedcbdeb433e1f6bc0
 function playerHitdetection() {
     //player hit detection
     if (player.attackPos.xPos + player.attackPos.width >= enemy.position.x &&
