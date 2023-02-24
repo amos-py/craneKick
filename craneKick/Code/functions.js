@@ -66,6 +66,13 @@ if (player_grounded == true) {
     }
 }
 
+// funksjon for hopping 
+function playerJump() {
+    if (player.position.y + player.height + player.velocity.y >= c_height) {
+        player_grounded = true;
+    }
+    else {player_grounded = false;}
+}
 
 // alle button presses som me trenge
 function keypress() {
