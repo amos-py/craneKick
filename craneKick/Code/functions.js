@@ -101,7 +101,7 @@ function keypress() {
         player.crouch();
     }
     if (k_key == true) {
-        enemy.attack()
+        player.attack()
         ohYeahAudio()
         ohYeah.cloneNode().play();
 
@@ -125,6 +125,7 @@ function playerHitdetection() {
         player.isAttacking = false
     }
 }
+
 function enemyBehavior() {
     //enemy hit detection
     if (enemy.attackPos.xPos + enemy.attackPos.width >= player.position.x &&
@@ -148,4 +149,3 @@ function enemyBehavior() {
         enemy.attack();
     }
 }
-
