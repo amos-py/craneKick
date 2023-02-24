@@ -1,4 +1,6 @@
 // player animations
+let player_grounded = document.getElementById("player_grounded");
+let vine_boom = document.getElementById("vine-boom");
 
 // spiller av lydfiler på tastetrykk
 function jumpAudio () {
@@ -7,7 +9,7 @@ function jumpAudio () {
 
 function playAudio(event) {
     if (event.key == " ") {
-      document.getElementById("audioJump");
+      document.getElementById("vine-boom");
     }
   }
 
@@ -42,6 +44,9 @@ document.onkeydown = function (event) {
 
 }
 
+if (player_grounded == true) {
+    playerExtraJump = playerExtraJumpValeu;
+}
 
   document.onkeyup = function (event) {
 
@@ -87,11 +92,25 @@ function keypress() {
     }
     if (spacebar == true && player_grounded == true) {
         jumpAudio();
-        audioJump.cloneNode().play();
+        vine_boom.cloneNode().play();
         player.velocity.y = -12;
     }
 
+<<<<<<< HEAD
 } //hitbox detection osv.
+=======
+}
+
+    // funksjon for hopping 
+    function playerJump() {
+        if (player.position.y + player.height + player.velocity.y >= c_height) {
+            player_grounded = true;
+        }
+        else {player_grounded = false;}
+    }
+
+//hitbox detection osv.
+>>>>>>> a94693d94b07a0afd08dd5aedcbdeb433e1f6bc0
 function playerHitdetection() {
     //player hit detection
     if (player.attackPos.xPos + player.attackPos.width >= enemy.position.x &&
@@ -127,10 +146,3 @@ function enemyBehavior() {
     }
 }
 
-// funksjon for hopping 
-function playerJump() {
-    if (player.position.y + player.height + player.velocity.y >= c_height) {
-        player_grounded = true;
-    }
-    else {player_grounded = false;}
-}
