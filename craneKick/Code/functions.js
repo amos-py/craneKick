@@ -90,7 +90,7 @@ function keypress() {
         player.crouch();
     }
     if (k_key == true) {
-        enemy.attack()
+        player.attack()
         ohYeahAudio()
         ohYeah.cloneNode().play();
 
