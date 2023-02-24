@@ -21,8 +21,9 @@ let playerSpeed = 5;
 let enemyRange = 25;
 let enemySpeed = 1;
 let enemyCanAttack = false;
+let jumpFinished;
 let playerExtraJump;
-let playerExtraJumpValeu = 1;
+let playerExtraJumpValue = 1;
 
 // player animation variabler
 let playerAnimationState = 4;

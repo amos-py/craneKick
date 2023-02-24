@@ -34,11 +34,12 @@ function animate() {
     keypress();
     playerHitdetection();
     enemyBehavior();
-    playerJump()
+    playerJump();
+    extraJump();
 
     player.updatePosition();
     enemy.updatePosition();
-    // console.log(player_grounded)
+    console.log(player_grounded)
     // console.log(playerExtraJumpValeu)
 }
 
