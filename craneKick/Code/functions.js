@@ -154,3 +154,5 @@ function enemyBehavior() {
         enemy.attack();
     }
 }
+
+// lar oss sette sprites på canvas (temp)

@@ -38,3 +38,6 @@ let playerAnimation = [
     ];
 
 let playerAnimationFPS = 4;
+
+let bogosBinted = new Image();
+        img.src = 'Art/Characters/bogosBinted.jpg';

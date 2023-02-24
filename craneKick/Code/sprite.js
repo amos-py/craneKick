@@ -15,7 +15,7 @@ class Sprite {
         this.isAttacking;
         this.color = color;
     }
-    
+
     // tegn spillerene 
     draw() {
         ctx.fillStyle = this.color;
