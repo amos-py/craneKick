@@ -89,7 +89,8 @@ function keypress() {
         player.crouch();
     }
     if (k_key == true) {
-        enemy.attack()
+        enemy.attack();
+        playOhYeahAudio();
     }
     if (spacebar == true && player_grounded == true) {
         jumpAudio();
