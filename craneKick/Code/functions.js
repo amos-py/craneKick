@@ -1,6 +1,5 @@
 // player animations
 let player_grounded = document.getElementById("player_grounded");
-let vine_boom = document.getElementById("vine-boom");
 
 // spiller av lydfiler på tastetrykk
 function jumpAudio () {
@@ -9,7 +8,7 @@ function jumpAudio () {
 
 function playAudio(event) {
     if (event.key == " ") {
-      document.getElementById("vine-boom");
+      document.getElementById("audioJump");
     }
   }
 
@@ -79,7 +78,7 @@ function keypress() {
     }
     if (spacebar == true && player_grounded == true) {
         jumpAudio();
-        vine_boom.cloneNode().play();
+        audioJump.cloneNode().play();
         player.velocity.y = -12;
     }
 
