@@ -33,8 +33,8 @@ let playerAnimation = [
     [               0 ], // 0: Still
     [   4,  5,  6,  7 ], // 1: Walking west
     [   8,  9, 10, 11 ], // 2: Walking east
-    [  12, 13, 14, 15 ], // 3: Walking north
-    [   0,  1,  2,  3 ]  // 4: Walking south
+    [  12, 13, 14, 15 ], // 3: Walking north - nuh uh!
+    [   0,  1,  2,  3 ]  // 4: Walking south - nuh uh!
     ];
 
 let playerAnimationFPS = 4;
