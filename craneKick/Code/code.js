@@ -41,5 +41,15 @@ function animate() {
     enemy.updatePosition();
 }
 
-animate()
+let imgSpriteSheet = new Image();
+imgSpriteSheet.src = spriteSheetURL;
+imgSpriteSheet.onload = initialize;
+
+function initialize() {
+    spriteWidth = imgSpriteSheet.width/spriteSheetColumns;
+    spriteHeight = imgSpriteSheet.height/spriteSheetRows;
+
+    animate()
+}
+
 

@@ -6,6 +6,8 @@ function jumpAudio () {
     document.addEventListener("keydown", playAudio);
 }
 
+
+
 function playAudio(event) {
     if (event.key == " ") {
       document.getElementById("audioJump");
@@ -21,7 +23,7 @@ function playOhYeahAudio(event) {
       document.getElementById("ohYeah").play();
     }
 }
-
+ deltaTime
   // Kode for bevegelse gjennom wasd
 document.onkeydown = function (event) {
 
@@ -47,15 +49,19 @@ document.onkeyup = function (event) {
 
     if (event.key == "s") {
         s_key = false;
+        playerAnimationState = 0;
     }
     if (event.key == "a") {
         a_key = false;
+        playerAnimationState = 0;
     }
     if (event.key == "d") {
         d_key = false;
+        playerAnimationState = 0;
     }
     if (event.key == " ") {
         spacebar = false;
+        playerAnimationState = 0;
     }
     if (event.key == "k") {
         k_key = false;
@@ -67,8 +73,6 @@ function extraJump() {
         playerExtraJump = playerExtraJumpValue;
     }
 
-    // document.onkeydown = function (event) {
-    //     if (event.key = " "){
             if (spacebar == true && player_grounded == false && player.velocity.y > -5 && playerExtraJump >= 1) { 
                 jumpAudio();
                 audioJump.cloneNode().play();
@@ -77,9 +81,6 @@ function extraJump() {
                 console.log("jump");
             }
         }
-    //     }
-    // }
-
 
 
 // funksjon for hopping 
@@ -87,7 +88,7 @@ function playerJump() {
     if (player.position.y + player.height + player.velocity.y >= c_height) {
         player_grounded = true;
     }
-    else {player_grounded = false;}
+    else {player_grounded = false;}                                              
 }
 
 // alle button presses som me trenge
@@ -95,12 +96,15 @@ function keypress() {
 
     if (a_key == true && d_key == false) {
         player.velocity.x = playerSpeed * -1;
+        playerAnimationState = 1;
     }
     if (d_key == true && a_key == false) {
         player.velocity.x = playerSpeed;
+        playerAnimationState = 2;
     }
     if (a_key == false && d_key == false) {
         player.velocity.x = 0;
+        playerAnimationState = 0;
     }
     if (s_key == true) {
         player.crouch();
@@ -154,5 +158,16 @@ function enemyBehavior() {
         enemy.attack();
     }
 }
+
+
+let lastTime = Date.now();
+function game() {
+    // Calculate time since last frame
+    let timeNow = Date.now();
+    let deltatime = (timeNow - lastTime)/1000; // Seconds
+    lastTime = timeNow;
+}
+// Booting up the game
+
 
 // lar oss sette sprites på canvas (temp)

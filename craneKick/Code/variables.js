@@ -26,16 +26,22 @@ let playerExtraJump;
 let playerExtraJumpValue = 1;
 
 // player animation variabler
-let playerAnimationState = 4;
+let playerAnimationState = 2;
 let playerAnimationIndex = 0;
 let playerAnitmationIndexFloat = 0.0;
 let playerAnimation = [
-    [               0 ], // 0: Still
-    [   4,  5,  6,  7 ], // 1: Walking west
-    [   8,  9, 10, 11 ], // 2: Walking east
-    [  12, 13, 14, 15 ], // 3: Walking north
-    [   0,  1,  2,  3 ]  // 4: Walking south
-    ];
+    [          0   ], // 0: Still
+    [  1,  2,  3,  ], // 1: Walking west
+    [  4,  5,  6,  ], // 2: Walking east
+]
+
+// Player sprites
+let spriteSheetURL = "sprite1.png";
+let spriteSheetRows = 2;
+let spriteSheetColumns = 3;
+let spriteWidth;
+let spriteHeight;
+
 
 let playerAnimationFPS = 4;
 
