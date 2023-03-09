@@ -1,6 +1,28 @@
 class Sprite {
     position;
     velocity;
+    constructor({ position, imageSrc }) {
+        this.position = position;
+        this.height = 150;
+        this.width = 50;
+        this.image = new Image();
+        this.image.src = imageSrc
+    }
+
+    // tegn sprite 
+    draw() {
+        ctx.drawImage(this.image, this.position.x, this.position.y)
+    }
+
+    // oppdaterer posisjonen til spilleren
+    update() {
+        this.draw()
+    }
+}
+
+class Fighter {
+    position;
+    velocity;
     constructor({ position, velocity, color = "IndianRed" }) {
         this.position = position;
         this.velocity = velocity;
@@ -19,7 +41,9 @@ class Sprite {
     // tegn spillerene 
     draw() {
         ctx.fillStyle = this.color;
-        ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+        // ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+        ctx.drawImage(imgSpriteSheet, 
+                spritecut)
 
         //attack box
         ctx.fillStyle = "LightYellow";

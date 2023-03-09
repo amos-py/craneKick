@@ -14,16 +14,16 @@ function playAudio(event) {
     }
   }
 
-function ohYeahAudio () {
-    document.addEventListener("keydown", playOhYeahAudio);
-}
+// function ohYeahAudio () {
+//     document.addEventListener("keydown", playOhYeahAudio);
+// }
 
-function playOhYeahAudio(event) {
-    if (event.key == "k") {
-      document.getElementById("ohYeah").play();
-    }
-}
- deltaTime
+// function playOhYeahAudio(event) {
+//     if (event.key == "k") {
+//       document.getElementById("ohYeah").play();
+//     }
+// }
+
   // Kode for bevegelse gjennom wasd
 document.onkeydown = function (event) {
 
@@ -76,7 +76,7 @@ function extraJump() {
             if (spacebar == true && player_grounded == false && player.velocity.y > -5 && playerExtraJump >= 1) { 
                 jumpAudio();
                 audioJump.cloneNode().play();
-                player.velocity.y = -12;
+                player.velocity.y = -15;
                 playerExtraJump--
                 console.log("jump");
             }
@@ -111,8 +111,8 @@ function keypress() {
     }
     if (k_key == true) {
         player.attack()
-        ohYeahAudio()
-        ohYeah.cloneNode().play();
+        // ohYeahAudio()
+        // ohYeah.cloneNode().play();
 
         k_key == false;
     }
@@ -160,13 +160,6 @@ function enemyBehavior() {
 }
 
 
-let lastTime = Date.now();
-function game() {
-    // Calculate time since last frame
-    let timeNow = Date.now();
-    let deltatime = (timeNow - lastTime)/1000; // Seconds
-    lastTime = timeNow;
-}
 // Booting up the game
 
 

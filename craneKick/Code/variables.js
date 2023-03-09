@@ -16,6 +16,15 @@ let k_key = false;
 // Definerer tyngdekraft
 let gravity = 0.981;
 
+
+let background = new Sprite({
+    position:{
+        x: 0,
+        y: 0
+    },
+    imageSrc: "./Rooms/backgound.png"
+})
+
 //player n enemy stats
 let playerSpeed = 5;
 let enemyRange = 25;
@@ -45,5 +54,5 @@ let spriteHeight;
 
 let playerAnimationFPS = 4;
 
-let bogosBinted = new Image();
-        img.src = 'Art/Characters/bogosBinted.jpg';
+// let bogosBinted = new Image();
+//         img.src = 'Art/Characters/bogosBinted.jpg';
