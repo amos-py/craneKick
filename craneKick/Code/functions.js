@@ -40,7 +40,10 @@ document.onkeydown = function (event) {
         spacebar = true;
     }
     if (event.key == "k") {
-        k_key = true;
+        if (!k_key){
+            k_key=true;
+            player.attack()
+        }
     }
 
 }
@@ -130,8 +133,8 @@ function playerHitdetection() {
         player.attackPos.yPos + player.attackPos.height >= enemy.height &&
         player.attackPos.yPos <= enemy.position.y + enemy.height &&
         player.isAttacking == true) {
-        console.log("hit");
         player.isAttacking = false
+        console.log("hit");
     }
 }
 
