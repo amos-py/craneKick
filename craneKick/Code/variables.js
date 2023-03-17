@@ -22,7 +22,7 @@ let background = new Sprite({
         x: 0,
         y: 0
     },
-    imageSrc: "./Rooms/backgound.png"
+    imageSrc: "background"
 })
 
 //player n enemy stats
@@ -45,7 +45,7 @@ let playerAnimation = [
 ]
 
 // Player sprites
-let spriteSheetURL = "sprite1.png";
+let spriteSheetURL = "sprite1";
 let spriteSheetRows = 2;
 let spriteSheetColumns = 3;
 let spriteWidth;
