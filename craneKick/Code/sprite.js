@@ -1,6 +1,5 @@
 class Sprite {
     position;
-    velocity;
     constructor({ position, imageSrc }) {
         this.position = position;
         this.height = 150;
