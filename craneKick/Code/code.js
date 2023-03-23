@@ -1,5 +1,13 @@
+let background = new Sprite({
+    position: {
+        x: 0,
+        y: 0
+    },
+    imageSrc: "./Art/Rooms/LimeroomConcept.png"
+})
+
 // Definerer spilleren og dens verdier
-let player = new Sprite({
+let player = new Fighter({
     position: {
         x: 0,
         y: 0
@@ -12,7 +20,7 @@ let player = new Sprite({
 });
 
 // Definerer motstander og dens verdier
-let enemy = new Sprite({
+let enemy = new Fighter({
     position: {
         x: 400,
         y: 100
@@ -24,11 +32,19 @@ let enemy = new Sprite({
 }); 
 
 // funksjon som starter programmet og sørger for at der fortsatter til det stoppes.
+let lastTime = Date.now();
 function animate() {
     window.requestAnimationFrame(animate);
 
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, c_width, c_height);
+    background.update()
+
+    // Calculate time since last frame
+    let timeNow = Date.now();
+    let deltatime = (timeNow - lastTime)/1000; // Seconds
+    lastTime = timeNow;
+
 
     //funksjoner
     keypress();
@@ -41,5 +57,5 @@ function animate() {
     enemy.updatePosition();
 }
 
-animate()
+
 

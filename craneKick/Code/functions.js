@@ -6,21 +6,23 @@ function jumpAudio () {
     document.addEventListener("keydown", playAudio);
 }
 
+
+
 function playAudio(event) {
     if (event.key == " ") {
       document.getElementById("audioJump");
     }
   }
 
-function ohYeahAudio () {
-    document.addEventListener("keydown", playOhYeahAudio);
-}
+// function ohYeahAudio () {
+//     document.addEventListener("keydown", playOhYeahAudio);
+// }
 
-function playOhYeahAudio(event) {
-    if (event.key == "k") {
-      document.getElementById("ohYeah").play();
-    }
-}
+// function playOhYeahAudio(event) {
+//     if (event.key == "k") {
+//       document.getElementById("ohYeah").play();
+//     }
+// }
 
   // Kode for bevegelse gjennom wasd
 document.onkeydown = function (event) {
@@ -38,7 +40,10 @@ document.onkeydown = function (event) {
         spacebar = true;
     }
     if (event.key == "k") {
-        k_key = true;
+        if (!k_key){
+            k_key=true;
+            player.attack()
+        }
     }
 
 }
@@ -47,15 +52,19 @@ document.onkeyup = function (event) {
 
     if (event.key == "s") {
         s_key = false;
+        playerAnimationState = 0;
     }
     if (event.key == "a") {
         a_key = false;
+        playerAnimationState = 0;
     }
     if (event.key == "d") {
         d_key = false;
+        playerAnimationState = 0;
     }
     if (event.key == " ") {
         spacebar = false;
+        playerAnimationState = 0;
     }
     if (event.key == "k") {
         k_key = false;
@@ -67,19 +76,14 @@ function extraJump() {
         playerExtraJump = playerExtraJumpValue;
     }
 
-    // document.onkeydown = function (event) {
-    //     if (event.key = " "){
             if (spacebar == true && player_grounded == false && player.velocity.y > -5 && playerExtraJump >= 1) { 
                 jumpAudio();
                 audioJump.cloneNode().play();
-                player.velocity.y = -12;
+                player.velocity.y = -15;
                 playerExtraJump--
                 console.log("jump");
             }
         }
-    //     }
-    // }
-
 
 
 // funksjon for hopping 
@@ -87,7 +91,7 @@ function playerJump() {
     if (player.position.y + player.height + player.velocity.y >= c_height) {
         player_grounded = true;
     }
-    else {player_grounded = false;}
+    else {player_grounded = false;}                                              
 }
 
 // alle button presses som me trenge
@@ -95,20 +99,23 @@ function keypress() {
 
     if (a_key == true && d_key == false) {
         player.velocity.x = playerSpeed * -1;
+        playerAnimationState = 1;
     }
     if (d_key == true && a_key == false) {
         player.velocity.x = playerSpeed;
+        playerAnimationState = 2;
     }
     if (a_key == false && d_key == false) {
         player.velocity.x = 0;
+        playerAnimationState = 0;
     }
     if (s_key == true) {
         player.crouch();
     }
     if (k_key == true) {
         player.attack()
-        ohYeahAudio()
-        ohYeah.cloneNode().play();
+        // ohYeahAudio()
+        // ohYeah.cloneNode().play();
 
         k_key == false;
     }
@@ -126,8 +133,8 @@ function playerHitdetection() {
         player.attackPos.yPos + player.attackPos.height >= enemy.height &&
         player.attackPos.yPos <= enemy.position.y + enemy.height &&
         player.isAttacking == true) {
-        console.log("hit");
         player.isAttacking = false
+        console.log("hit");
     }
 }
 
@@ -154,5 +161,9 @@ function enemyBehavior() {
         enemy.attack();
     }
 }
+
+
+// Booting up the game
+
 
 // lar oss sette sprites på canvas (temp)
