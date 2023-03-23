@@ -115,7 +115,7 @@ function keypress() {
     if (spacebar == true && player_grounded == true) {
         jumpAudio();
         audioJump.cloneNode().play();
-        player.velocity.y = -12;
+        player.velocity.y = -16;
     }
 
 } //hitbox detection osv.
