@@ -3,7 +3,7 @@ let background = new Sprite({
         x: 0,
         y: 0
     },
-    imageSrc: "./Art/Rooms/LimeroomConcept.png"
+    imageSrc: "./Art/Rooms/backgroundMain.png"
 })
 
 // Definerer spilleren og dens verdier

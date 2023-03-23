@@ -1,8 +1,3 @@
-// let roomLimeroom = document.getElementById("roomLimeroom");
-// image.addEventListener("load", (e) => {
-//     ctx.drawImage(roomLimeroom, 33, 71, 104, 124, 21, 20, 87, 104);
-//   });
-
 class Sprite {
     position;
     constructor({ position, imageSrc }) {
