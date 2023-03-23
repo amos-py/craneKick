@@ -31,19 +31,15 @@ let enemy = new Fighter({
     }
 }); 
 
+
+
 // funksjon som starter programmet og sørger for at der fortsatter til det stoppes.
-let lastTime = Date.now();
 function animate() {
     window.requestAnimationFrame(animate);
 
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, c_width, c_height);
     background.update()
-
-    // Calculate time since last frame
-    let timeNow = Date.now();
-    let deltatime = (timeNow - lastTime)/1000; // Seconds
-    lastTime = timeNow;
 
 
     //funksjoner
