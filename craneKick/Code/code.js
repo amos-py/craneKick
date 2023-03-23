@@ -57,5 +57,7 @@ function animate() {
     enemy.updatePosition();
 }
 
+animate()
+
 
 

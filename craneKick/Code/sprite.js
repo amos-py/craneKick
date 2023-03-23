@@ -45,9 +45,7 @@ class Fighter {
     // tegn spillerene 
     draw() {
         ctx.fillStyle = this.color;
-        // ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
-        ctx.drawImage(imgSpriteSheet, 
-                spritecut)
+        ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
 
         //attack box
         ctx.fillStyle = "LightYellow";
