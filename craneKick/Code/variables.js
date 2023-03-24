@@ -10,7 +10,7 @@ ctx.fillRect(0, 0, c_width, c_height)
 let a_key = false;
 let s_key = false;
 let d_key = false;
-let spacebar = false;
+let w_key = false;
 let k_key = false;
 
 // Definerer tyngdekraft

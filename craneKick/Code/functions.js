@@ -24,7 +24,10 @@ function playAudio(event) {
 //     }
 // }
 
-  // Kode for bevegelse gjennom wasd
+let lastTime;
+let seccond_jump = false;
+
+// Kode for bevegelse gjennom wasd
 document.onkeydown = function (event) {
 
     if (event.key == "s") {
@@ -36,8 +39,8 @@ document.onkeydown = function (event) {
     if (event.key == "d") {
         d_key = true;
     }
-    if (event.key == " ") {
-        spacebar = true;
+    if (event.key == "w") {
+        w_key = true;
     }
     if (event.key == "k") {
         if (!k_key){
@@ -62,9 +65,12 @@ document.onkeyup = function (event) {
         d_key = false;
         playerAnimationState = 0;
     }
-    if (event.key == " ") {
-        spacebar = false;
+    if (event.key == "w") {
+        w_key = false;
         playerAnimationState = 0;
+        if (player_grounded == false) {
+            seccond_jump = true;
+        }
     }
     if (event.key == "k") {
         k_key = false;
@@ -76,20 +82,21 @@ function extraJump() {
         playerExtraJump = playerExtraJumpValue;
     }
 
-            if (spacebar == true && player_grounded == false && player.velocity.y > -5 && playerExtraJump >= 1) { 
-                jumpAudio();
-                audioJump.cloneNode().play();
-                player.velocity.y = -15;
-                playerExtraJump--
-                console.log("jump");
-            }
-        }
+    if (w_key == true && player_grounded == false && player.velocity.y > -5 && playerExtraJump >= 1 && seccond_jump == true) {   
+            jumpAudio();
+            audioJump.cloneNode().play();
+            player.velocity.y = -15;
+            playerExtraJump--
+            console.log("jump");
+    }
+}
 
 
 // funksjon for hopping 
 function playerJump() {
     if (player.position.y + player.height + player.velocity.y >= c_height) {
         player_grounded = true;
+        seccond_jump = false;
     }
     else {player_grounded = false;}                                              
 }
@@ -116,16 +123,16 @@ function keypress() {
         player.attack()
         // ohYeahAudio()
         // ohYeah.cloneNode().play();
-
         k_key == false;
     }
-    if (spacebar == true && player_grounded == true) {
+    if (w_key == true && player_grounded == true) {
         jumpAudio();
         audioJump.cloneNode().play();
         player.velocity.y = -16;
     }
 
-} //hitbox detection osv.
+} 
+//hitbox detection osv.
 function playerHitdetection() {
     //player hit detection
     if (player.attackPos.xPos + player.attackPos.width >= enemy.position.x &&
