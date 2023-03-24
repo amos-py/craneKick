@@ -169,6 +169,11 @@ function enemyBehavior() {
     }
 }
 
+function health() {
+    
+}
+
+
 
 // Booting up the game
 
