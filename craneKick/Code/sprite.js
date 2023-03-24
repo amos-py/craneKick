@@ -27,6 +27,7 @@ class Fighter {
         this.velocity = velocity;
         this.height = 150;
         this.width = 50;
+        this.health = 100;
         this.attackPos = {
             xPos: this.position.x,
             yPos: this.position.y,
