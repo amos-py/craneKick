@@ -25,7 +25,7 @@ function playAudio(event) {
 // }
 
 let lastTime;
-let timeNow;
+let seccond_jump = false;
 
 // Kode for bevegelse gjennom wasd
 document.onkeydown = function (event) {
@@ -68,7 +68,9 @@ document.onkeyup = function (event) {
     if (event.key == "w") {
         w_key = false;
         playerAnimationState = 0;
-        lastTime = Date.now() 
+        if (player_grounded == false) {
+            seccond_jump = true;
+        }
     }
     if (event.key == "k") {
         k_key = false;
@@ -80,18 +82,12 @@ function extraJump() {
         playerExtraJump = playerExtraJumpValue;
     }
 
-    let deltatime = (lastTime - timeNow)/1000; // Seconds
-
-    if (w_key == true && player_grounded == false && player.velocity.y > -5 && playerExtraJump >= 1) { 
-        timeNow = Date.now();
-        if (deltatime < 0.1) {
+    if (w_key == true && player_grounded == false && player.velocity.y > -5 && playerExtraJump >= 1 && seccond_jump == true) {   
             jumpAudio();
             audioJump.cloneNode().play();
             player.velocity.y = -15;
             playerExtraJump--
             console.log("jump");
-            console.log(deltatime)
-        }
     }
 }
 
@@ -100,6 +96,7 @@ function extraJump() {
 function playerJump() {
     if (player.position.y + player.height + player.velocity.y >= c_height) {
         player_grounded = true;
+        seccond_jump = false;
     }
     else {player_grounded = false;}                                              
 }
