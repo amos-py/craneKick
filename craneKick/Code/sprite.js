@@ -86,6 +86,7 @@ class Fighter {
             this.isAttacking = false;
         }, 500)
     }
+    
     crouch(){
         this.height = 90;
         this.attackPos.yPos = this.position.y + this.height/2;

@@ -3,7 +3,7 @@ let background = new Sprite({
         x: 0,
         y: 0
     },
-    imageSrc: "./Art/Rooms/backgroundMain.png"
+    imageSrc: "./Art/Rooms/dojoBlues.png"
 })
 
 // Definerer spilleren og dens verdier
