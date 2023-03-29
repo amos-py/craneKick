@@ -2,7 +2,7 @@
 let player_grounded = document.getElementById("player_grounded");
 
 // spiller av lydfiler på tastetrykk
-function jumpAudio () {
+function jumpAudio() {
     document.addEventListener("keydown", playAudio);
 }
 
@@ -10,9 +10,9 @@ function jumpAudio () {
 
 function playAudio(event) {
     if (event.key == " ") {
-      document.getElementById("audioJump");
+        document.getElementById("audioJump");
     }
-  }
+}
 
 // function ohYeahAudio () {
 //     document.addEventListener("keydown", playOhYeahAudio);
@@ -43,8 +43,8 @@ document.onkeydown = function (event) {
         w_key = true;
     }
     if (event.key == "k") {
-        if (!k_key){
-            k_key=true;
+        if (!k_key) {
+            k_key = true;
             player.attack()
         }
     }
@@ -82,12 +82,12 @@ function extraJump() {
         playerExtraJump = playerExtraJumpValue;
     }
 
-    if (w_key == true && player_grounded == false && player.velocity.y > -5 && playerExtraJump >= 1 && seccond_jump == true) {   
-            jumpAudio();
-            audioJump.cloneNode().play();
-            player.velocity.y = -15;
-            playerExtraJump--
-            console.log("jump");
+    if (w_key == true && player_grounded == false && player.velocity.y > -5 && playerExtraJump >= 1 && seccond_jump == true) {
+        jumpAudio();
+        audioJump.cloneNode().play();
+        player.velocity.y = -15;
+        playerExtraJump--
+        console.log("jump");
     }
 }
 
@@ -98,7 +98,7 @@ function playerJump() {
         player_grounded = true;
         seccond_jump = false;
     }
-    else {player_grounded = false;}                                              
+    else { player_grounded = false; }
 }
 
 // alle button presses som me trenge
@@ -129,7 +129,7 @@ function keypress() {
         player.velocity.y = -16;
     }
 
-} 
+}
 //hitbox detection osv.
 function playerHitdetection() {
     //player hit detection
@@ -138,7 +138,8 @@ function playerHitdetection() {
         player.attackPos.yPos + player.attackPos.height >= enemy.height &&
         player.attackPos.yPos <= enemy.position.y + enemy.height &&
         player.isAttacking == true) {
-        player.isAttacking = false
+        player.isAttacking = false;
+        enemy.isAttacked();
         console.log("hit");
     }
 }
