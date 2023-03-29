@@ -35,6 +35,7 @@ class Fighter {
             height: 50,
         }
         this.isAttacking;
+        this.isAttacked;
         this.color = color;
     }
 
@@ -95,5 +96,11 @@ class Fighter {
             this.height = 150;
             
         }, 100)
+    }
+    pHealth(x){
+        if (this.isAttacked){
+            this.health = this.health - x
+            this.isAttacked = false;
+        }
     }
 }
