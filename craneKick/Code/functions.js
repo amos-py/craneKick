@@ -116,7 +116,7 @@ function keypress() {
         player.velocity.x = 0;
         playerAnimationState = 0;
     }
-    if (s_key == true) {
+    if (s_key == true && player_grounded == true) {
         player.crouch();
     }
     if (k_key == true) {

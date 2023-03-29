@@ -5,7 +5,7 @@ class Sprite {
         this.height = 150;
         this.width = 50;
         this.image = new Image();
-        this.image.src = imageSrc
+        this.image.src = imageSrc;
     }
 
     // tegn sprite 
@@ -27,7 +27,6 @@ class Fighter {
         this.velocity = velocity;
         this.height = 150;
         this.width = 50;
-        this.health = 100;
         this.attackPos = {
             xPos: this.position.x,
             yPos: this.position.y,
@@ -86,7 +85,6 @@ class Fighter {
             this.isAttacking = false;
         }, 500)
     }
-    
     crouch(){
         this.height = 90;
         this.attackPos.yPos = this.position.y + this.height/2;
