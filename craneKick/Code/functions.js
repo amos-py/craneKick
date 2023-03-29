@@ -120,10 +120,8 @@ function keypress() {
         player.crouch();
     }
     if (k_key == true) {
-        player.attack()
         // ohYeahAudio()
         // ohYeah.cloneNode().play();
-        k_key == false;
     }
     if (w_key == true && player_grounded == true) {
         jumpAudio();
@@ -169,9 +167,6 @@ function enemyBehavior() {
     }
 }
 
-function health() {
-    
-}
 
 
 
