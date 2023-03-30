@@ -24,3 +24,14 @@ let enemyCanAttack = false;
 let jumpFinished;
 let playerExtraJump;
 let playerExtraJumpValue = 1;
+
+
+// Player sprites
+let spriteSheetURL = "style4.png";
+let spriteSheetRows = 4;
+let spriteSheetColumns = 4;
+let spriteWidth;
+let spriteHeight;
+let imgSpriteSheet = new Image();
+imgSpriteSheet.src = spriteSheetURL;
+imgSpriteSheet.onload = initialize;

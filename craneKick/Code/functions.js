@@ -87,7 +87,6 @@ function extraJump() {
             audioJump.cloneNode().play();
             player.velocity.y = -15;
             playerExtraJump--
-            console.log("jump");
     }
 }
 
@@ -166,11 +165,3 @@ function enemyBehavior() {
         enemy.attack();
     }
 }
-
-
-
-
-// Booting up the game
-
-
-// lar oss sette sprites på canvas (temp)
