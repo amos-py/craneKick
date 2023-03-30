@@ -5,7 +5,7 @@ class Sprite {
         this.height = 150;
         this.width = 50;
         this.image = new Image();
-        this.image.src = imageSrc;
+        this.image.src = imageSrc
     }
 
     // tegn sprite 
@@ -27,6 +27,7 @@ class Fighter {
         this.velocity = velocity;
         this.height = 150;
         this.width = 50;
+        this.health = 100;
         this.attackPos = {
             xPos: this.position.x,
             yPos: this.position.y,
@@ -54,7 +55,7 @@ class Fighter {
         this.draw()
         this.position.x = this.position.x + this.velocity.x;
         this.position.y = this.position.y + this.velocity.y;
-        this.attackPos.yPos= this.position.y;
+        this.attackPos.yPos = this.position.y;
 
         // bytte sider ved direksjon
         if (this.velocity.x < 0) {
@@ -86,19 +87,20 @@ class Fighter {
             this.isAttacking = false;
         }, 500)
     }
-    crouch(){
+
+    crouch() {
         this.height = 90;
-        this.attackPos.yPos = this.position.y + this.height/2;
+        this.attackPos.yPos = this.position.y + this.height / 2;
         setTimeout(() => {
             this.attackPos.yPos = this.position.y;
             this.height = 150;
-            
+
         }, 100)
     }
-    pHealth(x){
-        if (this.isAttacked){
-            this.health = this.health - x
-            this.isAttacked = false;
+    isAttacked() {
+        this.health -= 20;
+        if (this.health == 0) {
+
         }
     }
 }
