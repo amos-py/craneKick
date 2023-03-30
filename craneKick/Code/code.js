@@ -1,9 +1,28 @@
+// Print bakgrunnen, rom/level
 let background = new Sprite({
     position: {
         x: 0,
         y: 0
     },
     imageSrc: "./Art/Rooms/dojoBlues.png"
+})
+
+// Print Health Bar
+let pHealthBar = new Sprite({
+    position: {
+        x: 10,
+        y: 10,
+    },
+    imageSrc: "./Art/UI/healthBar.png"
+})
+
+// Print Health Bar
+let eHealthBar = new Sprite({
+    position: {
+        x: 530,
+        y: 10,
+    },
+    imageSrc: "./Art/UI/healthBar.png"
 })
 
 // Definerer spilleren og dens verdier
@@ -40,7 +59,8 @@ function animate() {
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, c_width, c_height);
     background.update()
-
+    pHealthBar.update()
+    eHealthBar.update()
 
     //funksjoner
     keypress();
