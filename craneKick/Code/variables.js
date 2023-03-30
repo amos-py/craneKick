@@ -26,12 +26,24 @@ let playerExtraJump;
 let playerExtraJumpValue = 1;
 
 
+//sprite values
+let playerAnimationState = 4;
+let playerAnimationIndex = 0;
+let playerAnitmationIndexFloat = 0.0;
+let playerAnimation = [
+    [               0 ], // 0: Still
+    [   4,  5,  6,  7 ], // 1: Walking west
+    [   8,  9, 10, 11 ], // 2: Walking east
+    [  12, 13, 14, 15 ], // 3: Walking north
+    [   0,  1,  2,  3 ]  // 4: Walking south
+    ];
+
+let playerAnimationFPS = 4;
+
+
 // Player sprites
-let spriteSheetURL = "style4.png";
+let spriteSheetURL = "./Art/Characters/sprite1.png";
 let spriteSheetRows = 4;
 let spriteSheetColumns = 4;
-let spriteWidth;
-let spriteHeight;
-let imgSpriteSheet = new Image();
-imgSpriteSheet.src = spriteSheetURL;
-imgSpriteSheet.onload = initialize;
+
+

@@ -19,6 +19,9 @@ let player = new Fighter({
     attackColor: "yellow"
 });
 
+
+
+
 // Definerer motstander og dens verdier
 let enemy = new Fighter({
     position: {
@@ -31,16 +34,31 @@ let enemy = new Fighter({
     }
 }); 
 
+let imgSpriteSheet = new Image();
+imgSpriteSheet.src = spriteSheetURL;
+imgSpriteSheet.onload = initialize;
 
+//sprite functions
+function initialize() {
+    spriteWidth = imgSpriteSheet.width/spriteSheetColumns;
+    spriteHeight = imgSpriteSheet.height/spriteSheetRows;
 
+    animate();
+}
+
+let lastTime = Date.now();
 // funksjon som starter programmet og sørger for at der fortsatter til det stoppes.
 function animate() {
     window.requestAnimationFrame(animate);
 
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, c_width, c_height);
-    background.update()
+    background.onload = background.update()
 
+
+    let timeNow = Date.now();
+    let deltatime = (timeNow - lastTime)/1000; // Seconds
+    lastTime = timeNow;
 
     //funksjoner
     keypress();
@@ -49,11 +67,30 @@ function animate() {
     playerJump();
     extraJump();
 
+    updateSpritePos()
     player.updatePosition();
     enemy.updatePosition();
+
+    // Player animation
+    playerAnitmationIndexFloat += playerAnimationFPS * deltatime;
+    playerAnimationIndex = Math.floor(playerAnitmationIndexFloat)
+                            % playerAnimation[playerAnimationState].length;
+
+    let s = playerAnimationState;
+    let i = playerAnimationIndex;
+    let spriteCutStartX = playerAnimation[s][i]%spriteSheetColumns * spriteWidth;
+    let spriteCutStartY = Math.floor(playerAnimation[s][i]/spriteSheetColumns) * spriteHeight;
+
+    // Draw
+    ctx.drawImage(imgSpriteSheet,                                   // Source image
+        spriteCutStartX, spriteCutStartY,                           // Start cut   
+        spriteWidth, spriteHeight,                                  // Cut dimentions
+        player.position.x, player.position.y,          // Start paste
+        player.width, player.height);                                 // Paste dimentions
+
 }
 
-animate()
+// animate()
 
 
 

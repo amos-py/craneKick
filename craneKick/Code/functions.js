@@ -24,7 +24,6 @@ function playAudio(event) {
 //     }
 // }
 
-let lastTime;
 let seccond_jump = false;
 
 // Kode for bevegelse gjennom wasd
@@ -164,4 +163,9 @@ function enemyBehavior() {
         enemyCanAttack = true;
         enemy.attack();
     }
+}
+
+function updateSpritePos(){
+    playerX = player.position.x + player.velocity.x;
+    playerY = player.position.y + player.velocity.y;
 }
