@@ -42,6 +42,7 @@ document.onkeydown = function (event) {
         w_key = true;
     }
     if (event.key == "k") {
+        
         if (!k_key) {
             k_key = true;
             player.attack()
@@ -104,7 +105,7 @@ function keypress() {
 
     if (a_key == true && d_key == false) {
         player.velocity.x = playerSpeed * -1;
-        playerAnimationState = 1;
+        playerAnimationState = 3;
     }
     if (d_key == true && a_key == false) {
         player.velocity.x = playerSpeed;
@@ -116,8 +117,10 @@ function keypress() {
     }
     if (s_key == true && player_grounded == true) {
         player.crouch();
+        playerAnimationState = 4;
     }
     if (k_key == true) {
+
         // ohYeahAudio()
         // ohYeah.cloneNode().play();
     }
