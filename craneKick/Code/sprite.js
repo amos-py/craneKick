@@ -22,11 +22,11 @@ class Sprite {
 class Fighter {
     position;
     velocity;
-    constructor({ position, velocity, color = "IndianRed" }) {
+    constructor({ position, velocity, color = "transparent" }) {
         this.position = position;
         this.velocity = velocity;
         this.height = 150;
-        this.width = 50;
+        this.width = 300;
         this.health = 100;
         this.attackPos = {
             xPos: this.position.x,
@@ -45,7 +45,7 @@ class Fighter {
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
 
         //attack box
-        ctx.fillStyle = "LightYellow";
+        ctx.fillStyle = "transparent";
         ctx.fillRect(this.attackPos.xPos, this.attackPos.yPos,
             this.attackPos.width, this.attackPos.height);
     }
