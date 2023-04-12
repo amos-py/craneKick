@@ -38,7 +38,7 @@ let playerAnimation = [
     [   0,  1,  2,  3 ]  // 4: Walking south
     ];
 
-let playerAnimationFPS = 4;
+let playerAnimationFPS = 20;
 
 
 // Player sprites
