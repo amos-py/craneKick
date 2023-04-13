@@ -17,6 +17,7 @@ let k_key = false;
 let gravity = 0.981;
 
 //player n enemy stats
+let mapFloor = 545;
 let playerSpeed = 8;
 let enemyRange = 25;
 let enemySpeed = 1;
@@ -24,7 +25,8 @@ let enemyCanAttack = false;
 let jumpFinished;
 let playerExtraJump;
 let playerExtraJumpValue = 1;
-
+let playerLeft = false;
+let playerRight = true;
 
 //sprite values
 let playerAnimationState = 4;
@@ -35,13 +37,17 @@ let playerAnimation = [
     [              10 ], // 1: Idle Venstre
     [      0, 1, 2, 3 ], // 2: Walk Høyre
     [  10, 11, 12, 13 ], // 3: Walk venstre
-    [               20], // 4: Crouch
-    [30], // 5Jump
-    [40,41], // 6Punch
-    [50,51], // 7PunchDown
+    [              20 ], // 4: Crouch Right
+    [              21 ], // 5 Crouch left
+    [              30 ], // 6 Jump Right
+    [              31 ], // 7 Jump left
+    [           40,41 ], // 8 Punch Right
+    [           42,43 ], // 9 Punch left
+    [           50,51 ], // 10 PunchDown Right
+    [           52,53 ], // 11 Punchdown left
     ];
 
-let playerAnimationFPS = 20;
+let playerAnimationFPS = 4;
 
 
 // Player sprites

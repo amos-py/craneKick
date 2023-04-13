@@ -34,18 +34,28 @@ document.onkeydown = function (event) {
     }
     if (event.key == "a") {
         a_key = true;
+        playerLeft = true;
+        playerRight = false;
     }
     if (event.key == "d") {
         d_key = true;
+        playerRight = true;
+        playerLeft = false;
     }
     if (event.key == "w") {
         w_key = true;
     }
     if (event.key == "k") {
-        
         if (!k_key) {
             k_key = true;
-            player.attack()
+            if (playerRight == true) {
+                playerAnimationState = 8;
+                player.attack()
+            }
+            if (playerLeft == true) {
+                playerAnimationState = 9;
+                player.attack()
+            }
         }
     }
 
@@ -55,25 +65,38 @@ document.onkeyup = function (event) {
 
     if (event.key == "s") {
         s_key = false;
-        playerAnimationState = 0;
+        if (player_grounded == true) {
+            playerAnimationState = 0;
+        }
     }
     if (event.key == "a") {
         a_key = false;
-        playerAnimationState = 0;
+        if (player_grounded == true) {
+            playerAnimationState = 1;
+        }
     }
     if (event.key == "d") {
         d_key = false;
-        playerAnimationState = 0;
+        if (player_grounded == true) {
+            playerAnimationState = 0;
+        }
     }
     if (event.key == "w") {
         w_key = false;
-        playerAnimationState = 0;
         if (player_grounded == false) {
             seccond_jump = true;
         }
     }
     if (event.key == "k") {
         k_key = false;
+        if (player_grounded == true) {
+            if (playerRight == true && k_key == false) {
+                playerAnimatonState = 0;
+            }
+            if (playerLeft == true && k_key == false) {
+                playerAnimationState = 1;
+            }
+        }
     }
 }
 
@@ -82,20 +105,25 @@ function extraJump() {
         playerExtraJump = playerExtraJumpValue;
     }
 
-    if (w_key == true && player_grounded == false && player.velocity.y > -5 && playerExtraJump >= 1 && seccond_jump == true) {   
-            jumpAudio();
-            audioJump.cloneNode().play();
-            player.velocity.y = -15;
-            playerExtraJump--
+    if (w_key == true && player_grounded == false && player.velocity.y > -5 && playerExtraJump >= 1 && seccond_jump == true) {
+        jumpAudio();
+        audioJump.cloneNode().play();
+        player.velocity.y = -15;
+        playerExtraJump--
     }
 }
 
-
+//if (playerLeft == true){
+//    playerAnimationState = 1
+//} else {
+//    playerAnimationState = 0
+//}
 // funksjon for hopping 
 function playerJump() {
-    if (player.position.y + player.height + player.velocity.y >= c_height) {
+    if (player.position.y + player.height + player.velocity.y >= mapFloor) {
         player_grounded = true;
         seccond_jump = false;
+
     }
     else { player_grounded = false; }
 }
@@ -105,15 +133,31 @@ function keypress() {
 
     if (a_key == true && d_key == false) {
         player.velocity.x = playerSpeed * -1;
-        playerAnimationState = 3;
+        if (player_grounded == true) {
+            playerAnimationState = 3;
+        }
+        if (player_grounded == false) {
+            playerAnimationState = 7;
+        }
     }
     if (d_key == true && a_key == false) {
         player.velocity.x = playerSpeed;
-        playerAnimationState = 2;
+        if (player_grounded == true) {
+            playerAnimationState = 2;
+        }
+        if (player_grounded == false) {
+            playerAnimationState = 6;
+        }
     }
     if (a_key == false && d_key == false) {
-        player.velocity.x = 0;
-        playerAnimationState = 0;
+        //if (player_grounded == true) {
+            player.velocity.x = 0;
+        //    if (playerLeft == true) {
+        //        playerAnimationState = 1;
+        //   } else {
+        //        playerAnimationState = 0;
+        //    }
+        //}
     }
     if (s_key == true && player_grounded == true) {
         player.crouch();
@@ -126,6 +170,11 @@ function keypress() {
     }
     if (w_key == true && player_grounded == true) {
         jumpAudio();
+        if (playerLeft == true) {
+            playerAnimationState = 7;
+        } else {
+            playerAnimationState = 6;
+        }
         audioJump.cloneNode().play();
         player.velocity.y = -16;
     }
@@ -169,7 +218,7 @@ function enemyBehavior() {
     }
 }
 
-function updateSpritePos(){
+function updateSpritePos() {
     playerX = player.position.x + player.velocity.x;
     playerY = player.position.y + player.velocity.y;
 }
