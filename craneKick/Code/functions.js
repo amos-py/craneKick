@@ -6,8 +6,6 @@ function jumpAudio() {
     document.addEventListener("keydown", playAudio);
 }
 
-
-
 function playAudio(event) {
     if (event.key == " ") {
         document.getElementById("audioJump");
