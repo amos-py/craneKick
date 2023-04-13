@@ -22,7 +22,7 @@ class Sprite {
 class Fighter {
     position;
     velocity;
-    constructor({ position, velocity, color = "transparent" }) {
+    constructor({ position, velocity, color = "red" }) {
         this.position = position;
         this.velocity = velocity;
         this.height = 200;
@@ -50,7 +50,7 @@ class Fighter {
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
 
         //attack box
-        ctx.fillStyle = "transparent";
+        ctx.fillStyle = "blue";
         ctx.fillRect(this.attackPos.xPos, this.attackPos.yPos,
             this.attackPos.width, this.attackPos.height);
 
@@ -75,7 +75,7 @@ class Fighter {
         }
 
         // sørger for at spilleren holder seg innenfor canvas
-        if (this.position.y + this.height + this.velocity.y >= c_height) {
+        if (this.position.y + this.height + this.velocity.y >= mapFloor) {
             this.velocity.y = 0;
         } else {
             this.velocity.y += gravity;
