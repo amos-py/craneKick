@@ -105,8 +105,8 @@ function animate() {
     ctx.drawImage(imgSpriteSheet,                                   // Source image
         spriteCutStartX, spriteCutStartY,                           // Start cut   
         spriteWidth, spriteHeight,                                  // Cut dimentions
-        player.position.x, player.position.y,          // Start paste
-        player.width, player.height);                                 // Paste dimentions
+        player.position.x - 100, player.position.y,          // Start paste
+        250, player.height);                                 // Paste dimentions
 
 }
 

@@ -17,6 +17,7 @@ let k_key = false;
 let gravity = 0.981;
 
 //player n enemy stats
+let mapFloor = 545;
 let playerSpeed = 8;
 let enemyRange = 25;
 let enemySpeed = 1;
@@ -24,26 +25,34 @@ let enemyCanAttack = false;
 let jumpFinished;
 let playerExtraJump;
 let playerExtraJumpValue = 1;
-
+let playerLeft = false;
+let playerRight = true;
 
 //sprite values
 let playerAnimationState = 4;
 let playerAnimationIndex = 0;
 let playerAnitmationIndexFloat = 0.0;
 let playerAnimation = [
-    [               0 ], // 0: Still
-    [   4,  5,  6,  7 ], // 1: Walking west
-    [   8,  9, 10, 11 ], // 2: Walking east
-    [  12, 13, 14, 15 ], // 3: Walking north
-    [   0,  1,  2,  3 ]  // 4: Walking south
+    [               0 ], // 0: Idle høyre
+    [              10 ], // 1: Idle Venstre
+    [      0, 1, 2, 3 ], // 2: Walk Høyre
+    [  10, 11, 12, 13 ], // 3: Walk venstre
+    [              20 ], // 4: Crouch Right
+    [              21 ], // 5 Crouch left
+    [              30 ], // 6 Jump Right
+    [              31 ], // 7 Jump left
+    [           40,41 ], // 8 Punch Right
+    [           42,43 ], // 9 Punch left
+    [           50,51 ], // 10 PunchDown Right
+    [           52,53 ], // 11 Punchdown left
     ];
 
 let playerAnimationFPS = 4;
 
 
 // Player sprites
-let spriteSheetURL = "./Art/Characters/sprite1.png";
-let spriteSheetRows = 4;
-let spriteSheetColumns = 4;
+let spriteSheetURL = "./Art/Characters/spritesheetDrew.png";
+let spriteSheetRows = 10;
+let spriteSheetColumns = 10;
 
 
