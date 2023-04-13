@@ -25,8 +25,8 @@ class Fighter {
     constructor({ position, velocity, color = "transparent" }) {
         this.position = position;
         this.velocity = velocity;
-        this.height = 150;
-        this.width = 300;
+        this.height = 200;
+        this.width = 240;
         this.health = 100;
         this.attackPos = {
             xPos: this.position.x,
