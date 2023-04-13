@@ -26,12 +26,12 @@ class Fighter {
         this.position = position;
         this.velocity = velocity;
         this.height = 200;
-        this.width = 240;
+        this.width = 50;
         this.health = 100;
         this.attackPos = {
             xPos: this.position.x,
             yPos: this.position.y,
-            width: 100,
+            width: 90,
             height: 50,
         }
         this.isAttacking;
@@ -66,7 +66,7 @@ class Fighter {
 
         // bytte sider ved direksjon
         if (this.velocity.x < 0) {
-            this.attackPos.xPos = this.position.x - this.width;
+            this.attackPos.xPos = this.position.x - this.attackPos.width + this.width;
             this.attackPos.yPos = this.position.y;
         }
         if (this.velocity.x > 0) {
