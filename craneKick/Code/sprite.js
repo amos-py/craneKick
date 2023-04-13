@@ -25,7 +25,7 @@ class Fighter {
     constructor({ position, velocity, color = "transparent" }) {
         this.position = position;
         this.velocity = velocity;
-        this.height = 150;
+        this.height = 200;
         this.width = 300;
         this.health = 100;
         this.attackPos = {
@@ -41,6 +41,11 @@ class Fighter {
 
     // tegn spillerene 
     draw() {
+        // Health Bar
+        ctx.fillstyle = "blue";
+        ctx.fillRect(20, 20, 100, 100);
+
+        //
         ctx.fillStyle = this.color;
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
 
@@ -48,6 +53,8 @@ class Fighter {
         ctx.fillStyle = "transparent";
         ctx.fillRect(this.attackPos.xPos, this.attackPos.yPos,
             this.attackPos.width, this.attackPos.height);
+
+
     }
 
     // oppdaterer posisjonen til spilleren

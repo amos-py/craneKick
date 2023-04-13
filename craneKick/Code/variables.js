@@ -41,7 +41,7 @@ let playerAnimation = [
     [50,51], // 7PunchDown
     ];
 
-let playerAnimationFPS = 20;
+let playerAnimationFPS = 4;
 
 
 // Player sprites
