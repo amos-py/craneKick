@@ -51,7 +51,7 @@ let enemy = new Fighter({
         x: 0,
         y: 10
     }
-}); 
+});
 
 let imgSpriteSheet = new Image();
 imgSpriteSheet.src = spriteSheetURL;
@@ -59,8 +59,8 @@ imgSpriteSheet.onload = initialize;
 
 //sprite functions
 function initialize() {
-    spriteWidth = imgSpriteSheet.width/spriteSheetColumns;
-    spriteHeight = imgSpriteSheet.height/spriteSheetRows;
+    spriteWidth = imgSpriteSheet.width / spriteSheetColumns;
+    spriteHeight = imgSpriteSheet.height / spriteSheetRows;
 
     animate();
 }
@@ -77,7 +77,7 @@ function animate() {
     eHealthBar.update()
 
     let timeNow = Date.now();
-    let deltatime = (timeNow - lastTime)/1000; // Seconds
+    let deltatime = (timeNow - lastTime) / 1000; // Seconds
     lastTime = timeNow;
 
     //funksjoner
@@ -94,19 +94,19 @@ function animate() {
     // Player animation
     playerAnitmationIndexFloat += playerAnimationFPS * deltatime;
     playerAnimationIndex = Math.floor(playerAnitmationIndexFloat)
-                            % playerAnimation[playerAnimationState].length;
+        % playerAnimation[playerAnimationState].length;
 
     let s = playerAnimationState;
     let i = playerAnimationIndex;
-    let spriteCutStartX = playerAnimation[s][i]%spriteSheetColumns * spriteWidth;
-    let spriteCutStartY = Math.floor(playerAnimation[s][i]/spriteSheetColumns) * spriteHeight;
+    let spriteCutStartX = playerAnimation[s][i] % spriteSheetColumns * spriteWidth;
+    let spriteCutStartY = Math.floor(playerAnimation[s][i] / spriteSheetColumns) * spriteHeight;
 
     // Draw
     ctx.drawImage(imgSpriteSheet,                                   // Source image
         spriteCutStartX, spriteCutStartY,                           // Start cut   
         spriteWidth, spriteHeight,                                  // Cut dimentions
-        player.position.x - 100, player.position.y,          // Start paste
-        250, player.height);                                 // Paste dimentions
+        player.position.x - player.width, player.position.y,          // Start paste
+        150, player.height);                                 // Paste dimentions
 
 }
 

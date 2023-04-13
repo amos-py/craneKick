@@ -26,12 +26,12 @@ class Fighter {
         this.position = position;
         this.velocity = velocity;
         this.height = 200;
-        this.width = 300;
+        this.width = 50;
         this.health = 100;
         this.attackPos = {
             xPos: this.position.x,
             yPos: this.position.y,
-            width: 130,
+            width: 90,
             height: 50,
         }
         this.isAttacking;

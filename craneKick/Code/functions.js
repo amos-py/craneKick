@@ -63,21 +63,15 @@ document.onkeyup = function (event) {
 
     if (event.key == "s") {
         s_key = false;
-        if (player_grounded == true) {
-            playerAnimationState = 0;
-        }
+
     }
     if (event.key == "a") {
         a_key = false;
-        if (player_grounded == true) {
-            playerAnimationState = 1;
-        }
+
     }
     if (event.key == "d") {
         d_key = false;
-        if (player_grounded == true) {
-            playerAnimationState = 0;
-        }
+
     }
     if (event.key == "w") {
         w_key = false;
