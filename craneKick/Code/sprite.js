@@ -96,11 +96,11 @@ class Fighter {
     }
 
     crouch() {
-        this.height = 90;
+        this.height = 120;
         this.attackPos.yPos = this.position.y + this.height / 2;
         setTimeout(() => {
             this.attackPos.yPos = this.position.y;
-            this.height = 150;
+            this.height = 200;
 
         }, 100)
     }

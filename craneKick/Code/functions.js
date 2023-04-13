@@ -141,16 +141,17 @@ function keypress() {
             playerAnimationState = 6;
         }
     }
-    if (a_key == false && d_key == false) {
-        //if (player_grounded == true) {
+    if (a_key == false && d_key == false && k_key == false) {
+        if (player_grounded == true) {
             player.velocity.x = 0;
-        //    if (playerLeft == true) {
-        //        playerAnimationState = 1;
-        //   } else {
-        //        playerAnimationState = 0;
-        //    }
-        //}
+            if (playerLeft == true) {
+                playerAnimationState = 1;
+        } else {
+                playerAnimationState = 0;
+            }
     }
+    }
+    
     if (s_key == true && player_grounded == true) {
         player.crouch();
         playerAnimationState = 4;
