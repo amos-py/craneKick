@@ -159,6 +159,8 @@ function keypress() {
             }
         }
     }
+    }
+    
     if (s_key == true && player_grounded == true) {
         player.crouch();
         playerAnimationState = 4;
@@ -179,7 +181,6 @@ function keypress() {
         player.velocity.y = -16;
     }
 
-}
 //hitbox detection osv.
 function playerHitdetection() {
     //player hit detection
