@@ -100,7 +100,7 @@ class Fighter {
         this.attackPos.yPos = this.position.y + this.height / 2;
         setTimeout(() => {
             this.attackPos.yPos = this.position.y;
-            this.height = 150;
+            this.height = 200;
 
         }, 100)
     }

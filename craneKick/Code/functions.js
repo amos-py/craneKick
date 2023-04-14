@@ -6,6 +6,8 @@ function jumpAudio() {
     document.addEventListener("keydown", playAudio);
 }
 
+
+
 function playAudio(event) {
     if (event.key == " ") {
         document.getElementById("audioJump");
@@ -63,15 +65,21 @@ document.onkeyup = function (event) {
 
     if (event.key == "s") {
         s_key = false;
-
+        if (player_grounded == true) {
+            playerAnimationState = 0;
+        }
     }
     if (event.key == "a") {
         a_key = false;
-
+        if (player_grounded == true) {
+            playerAnimationState = 1;
+        }
     }
     if (event.key == "d") {
         d_key = false;
-
+        if (player_grounded == true) {
+            playerAnimationState = 0;
+        }
     }
     if (event.key == "w") {
         w_key = false;
@@ -141,15 +149,15 @@ function keypress() {
             playerAnimationState = 6;
         }
     }
-    if (a_key == false && d_key == false) {
-        //if (player_grounded == true) {
+    if (a_key == false && d_key == false && k_key == false) {
+        if (player_grounded == true) {
             player.velocity.x = 0;
-        //    if (playerLeft == true) {
-        //        playerAnimationState = 1;
-        //   } else {
-        //        playerAnimationState = 0;
-        //    }
-        //}
+            if (playerLeft == true) {
+                playerAnimationState = 1;
+            } else {
+                playerAnimationState = 0;
+            }
+        }
     }
     if (s_key == true && player_grounded == true) {
         player.crouch();
@@ -201,10 +209,23 @@ function enemyBehavior() {
     // move toward player
     if (enemy.attackPos.xPos - enemyRange >= player.position.x) {
         enemy.velocity.x = enemySpeed * -1;
+        enemyAnimationState = 3;
+        enemyRight = false;
+        enemyLeft = true;
+
     } else if (enemy.attackPos.xPos + enemy.attackPos.width + enemyRange <= player.position.x + player.width) {
         enemy.velocity.x = enemySpeed;
+        enemyAnimationState = 2;
+        enemyLeft = false;
+        enemyRight = true;
     } else {
         enemy.velocity.x = 0;
+        if (enemyLeft == true) {
+            enemyAnimationState = 1;
+        }
+        if (enemyRight == true) {
+            enemyAnimationState = 0;
+        }
         enemyCanAttack = true;
         enemy.attack();
     }
