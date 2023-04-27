@@ -22,7 +22,7 @@ class Sprite {
 class Fighter {
     position;
     velocity;
-    constructor({ position, velocity, color = "transparent" }) {
+    constructor({ position, velocity, color = "red" }) {
         this.position = position;
         this.velocity = velocity;
         this.height = 200;
