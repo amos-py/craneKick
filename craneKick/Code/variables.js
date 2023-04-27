@@ -14,11 +14,11 @@ let w_key = false;
 let k_key = false;
 
 // Definerer tyngdekraft
-let gravity = 0.981;
+let gravity = 0.045;
 
 //player n enemy stats
 let mapFloor = 545;
-let playerSpeed = 8;
+let playerSpeed = 1.5;
 let enemyRange = 25;
 let enemySpeed = 1;
 let enemyCanAttack = false;
@@ -29,7 +29,7 @@ let playerLeft = false;
 let playerRight = true;
 
 //sprite values
-let playerAnimationState = 4;
+let playerAnimationState = 0;
 let playerAnimationIndex = 0;
 let playerAnitmationIndexFloat = 0.0;
 let playerAnimation = [

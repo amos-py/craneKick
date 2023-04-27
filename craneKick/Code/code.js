@@ -1,29 +1,3 @@
-// Print bakgrunnen, rom/level
-let background = new Sprite({
-    position: {
-        x: 0,
-        y: 0
-    },
-    imageSrc: "./Art/Rooms/dojoBlues.png"
-})
-
-// Print Health Bar
-let pHealthBar = new Sprite({
-    position: {
-        x: 10,
-        y: 10,
-    },
-    imageSrc: "./Art/UI/healthBar.png"
-})
-
-// Print Health Bar
-let eHealthBar = new Sprite({
-    position: {
-        x: 530,
-        y: 10,
-    },
-    imageSrc: "./Art/UI/healthBar.png"
-})
 
 // Definerer spilleren og dens verdier
 let player = new Fighter({
@@ -37,6 +11,7 @@ let player = new Fighter({
     },
     attackColor: "yellow"
 });
+
 
 
 
@@ -78,6 +53,8 @@ function animate() {
     background.onload = background.update()
     pHealthBar.update()
     eHealthBar.update()
+    drawHealthBar();
+
 
     let timeNow = Date.now();
     let deltatime = (timeNow - lastTime) / 1000; // Seconds
