@@ -98,7 +98,7 @@ function extraJump() {
     if (w_key == true && player_grounded == false  && player.velocity.y > -2 && playerExtraJump >= 1 && seccond_jump == true) {
         jumpAudio();
         audioJump.cloneNode().play();
-        player.velocity.y = -4;
+        player.velocity.y = -3.5;
         playerExtraJump--
     }
 }
