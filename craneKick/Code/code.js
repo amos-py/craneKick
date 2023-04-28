@@ -37,7 +37,7 @@ enemyImgSpriteSheet.onload = initialize;
 
 //sprite functions
 function initialize() {
-    spriteWidth = imgSpriteSheet.width / spriteSheetColumns;
+    spriteWidth = imgSpriteSheet.width / spriteSheetColumans;
     spriteHeight = imgSpriteSheet.height / spriteSheetRows;
     
     animate();
