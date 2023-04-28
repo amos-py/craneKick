@@ -95,7 +95,7 @@ function extraJump() {
         playerExtraJump = playerExtraJumpValue;
     }
 
-    if (w_key == true && player_grounded == false  && player.velocity.y > -2 && playerExtraJump >= 1 && seccond_jump == true) {
+    if (w_key == true && player_grounded == false && player.velocity.y > -2 && playerExtraJump >= 1 && seccond_jump == true) {
         jumpAudio();
         audioJump.cloneNode().play();
         player.velocity.y = -3.5;
@@ -144,8 +144,8 @@ function keypress() {
             }
         }
     }
-    
-    
+
+
     if (s_key == true && player_grounded == true) {
         player.crouch();
         playerAnimationState = 4;
@@ -189,8 +189,7 @@ function enemyBehavior() {
         enemy.attackPos.yPos <= player.position.y + player.height &&
         enemy.isAttacking == true && enemyCanAttack == true) {
         enemy.isAttacking = false;
-        enemyCanAttack = false;
-        // console.log("enemy hit");
+
     }
 
     // move toward player
@@ -207,14 +206,21 @@ function enemyBehavior() {
         enemyRight = true;
     } else {
         enemy.velocity.x = 0;
+        enemy.isAttacking = true;
+
+        enemyAnimationState = 1;
         if (enemyLeft == true) {
-            enemyAnimationState = 1;
+            if (enemy.isAttacking == true) {
+                enemyAnimationState = 9;
+            }
         }
         if (enemyRight == true) {
+
             enemyAnimationState = 0;
+            if (enemy.isAttacking == true) {
+                enemyAnimationState = 8;
+            }
         }
-        enemyCanAttack = true;
-        enemy.attack();
     }
 }
 
