@@ -41,10 +41,6 @@ class Fighter {
 
     // tegn spillerene 
     draw() {
-        // Health Bar
-        ctx.fillstyle = "blue";
-        ctx.fillRect(20, 20, 100, 100);
-
         //
         ctx.fillStyle = this.color;
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
@@ -105,9 +101,6 @@ class Fighter {
         }, 100)
     }
     isAttacked() {
-        this.health -= 20;
-        if (this.health == 0) {
-
-        }
+        reduceHealth(20)
     }
 }

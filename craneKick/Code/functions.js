@@ -12,16 +12,6 @@ function playAudio(event) {
     }
 }
 
-// function ohYeahAudio () {
-//     document.addEventListener("keydown", playOhYeahAudio);
-// }
-
-// function playOhYeahAudio(event) {
-//     if (event.key == "k") {
-//       document.getElementById("ohYeah").play();
-//     }
-// }
-
 let seccond_jump = false;
 
 // Kode for bevegelse gjennom wasd
@@ -42,6 +32,8 @@ document.onkeydown = function (event) {
     }
     if (event.key == "w") {
         w_key = true;
+        console.log(player_grounded)
+        console.log(w_key)
     }
     if (event.key == "k") {
         if (!k_key) {
@@ -63,15 +55,21 @@ document.onkeyup = function (event) {
 
     if (event.key == "s") {
         s_key = false;
-
+        if (player_grounded == true) {
+            playerAnimationState = 0;
+        }
     }
     if (event.key == "a") {
         a_key = false;
-
+        if (player_grounded == true) {
+            playerAnimationState = 1;
+        }
     }
     if (event.key == "d") {
         d_key = false;
-
+        if (player_grounded == true) {
+            playerAnimationState = 0;
+        }
     }
     if (event.key == "w") {
         w_key = false;
@@ -97,19 +95,14 @@ function extraJump() {
         playerExtraJump = playerExtraJumpValue;
     }
 
-    if (w_key == true && player_grounded == false && player.velocity.y > -5 && playerExtraJump >= 1 && seccond_jump == true) {
+    if (w_key == true && player_grounded == false  && player.velocity.y > -2 && playerExtraJump >= 1 && seccond_jump == true) {
         jumpAudio();
         audioJump.cloneNode().play();
-        player.velocity.y = -15;
+        player.velocity.y = -3.5;
         playerExtraJump--
     }
 }
 
-//if (playerLeft == true){
-//    playerAnimationState = 1
-//} else {
-//    playerAnimationState = 0
-//}
 // funksjon for hopping 
 function playerJump() {
     if (player.position.y + player.height + player.velocity.y >= mapFloor) {
@@ -150,11 +143,12 @@ function keypress() {
             player.velocity.x = 0;
             if (playerLeft == true) {
                 playerAnimationState = 1;
-        } else {
+            } else {
                 playerAnimationState = 0;
             }
+        }
     }
-    }
+    
     
     if (s_key == true && player_grounded == true) {
         player.crouch();
@@ -173,10 +167,10 @@ function keypress() {
             playerAnimationState = 6;
         }
         audioJump.cloneNode().play();
-        player.velocity.y = -16;
+        player.velocity.y = -4;
     }
-
 }
+
 //hitbox detection osv.
 function playerHitdetection() {
     //player hit detection
@@ -206,10 +200,23 @@ function enemyBehavior() {
     // move toward player
     if (enemy.attackPos.xPos - enemyRange >= player.position.x) {
         enemy.velocity.x = enemySpeed * -1;
+        enemyAnimationState = 3;
+        enemyRight = false;
+        enemyLeft = true;
+
     } else if (enemy.attackPos.xPos + enemy.attackPos.width + enemyRange <= player.position.x + player.width) {
         enemy.velocity.x = enemySpeed;
+        enemyAnimationState = 2;
+        enemyLeft = false;
+        enemyRight = true;
     } else {
         enemy.velocity.x = 0;
+        if (enemyLeft == true) {
+            enemyAnimationState = 1;
+        }
+        if (enemyRight == true) {
+            enemyAnimationState = 0;
+        }
         enemyCanAttack = true;
         enemy.attack();
     }
