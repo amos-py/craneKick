@@ -10,6 +10,7 @@ let player = new Fighter({
         y: 10
     },
     attackColor: "yellow"
+    
 });
 
 
@@ -37,7 +38,7 @@ enemyImgSpriteSheet.onload = initialize;
 
 //sprite functions
 function initialize() {
-    spriteWidth = imgSpriteSheet.width / spriteSheetColumans;
+    spriteWidth = imgSpriteSheet.width / spriteSheetColumns;
     spriteHeight = imgSpriteSheet.height / spriteSheetRows;
     
     animate();
