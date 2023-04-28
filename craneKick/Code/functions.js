@@ -120,6 +120,10 @@ function playerJump() {
     else { player_grounded = false; }
 }
 
+function enemyDeath() {
+    
+}
+
 // alle button presses som me trenge
 function keypress() {
 
