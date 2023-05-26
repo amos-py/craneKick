@@ -32,11 +32,11 @@ let mengde = 0;
 function drawHealthBar() {
     // Healthbar bakgrunn
     ctx.fillStyle = 'black';
-    ctx.fillRect(24, 20, 458, 53);
+    ctx.fillRect(540, 20, 458, 53);
 
     // Healthbar
     ctx.fillStyle = 'blue';
-    ctx.fillRect(20, 20, 4.63 * health, 53);
+    ctx.fillRect(540, 20, 4.63 * health, 53);
 }
 
 function reduceHealth(mengde) {

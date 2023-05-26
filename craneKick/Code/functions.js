@@ -32,8 +32,7 @@ document.onkeydown = function (event) {
     }
     if (event.key == "w") {
         w_key = true;
-        console.log(player_grounded)
-        console.log(w_key)
+
     }
     if (event.key == "k") {
         if (!k_key) {
@@ -95,10 +94,10 @@ function extraJump() {
         playerExtraJump = playerExtraJumpValue;
     }
 
-    if (w_key == true && player_grounded == false && player.velocity.y > -2 && playerExtraJump >= 1 && seccond_jump == true) {
+    if (w_key == true && player_grounded == false  && player.velocity.y > -5 && playerExtraJump >= 1 && seccond_jump == true) {
         jumpAudio();
         audioJump.cloneNode().play();
-        player.velocity.y = -3.5;
+        player.velocity.y = -13;
         playerExtraJump--
     }
 }
@@ -167,7 +166,7 @@ function keypress() {
             playerAnimationState = 6;
         }
         audioJump.cloneNode().play();
-        player.velocity.y = -4;
+        player.velocity.y = -13;
     }
 }
 
