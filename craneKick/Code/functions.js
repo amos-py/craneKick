@@ -191,8 +191,9 @@ function enemyBehavior() {
         enemy.attackPos.xPos <= player.position.x + player.width &&
         enemy.attackPos.yPos + enemy.attackPos.height >= player.height &&
         enemy.attackPos.yPos <= player.position.y + player.height &&
-        enemy.isAttacking == true && enemyCanAttack == true) {
-        enemy.isAttacking = false;
+        enemy.isAttacking == true) {
+        player.isAttacked();
+        
 
     }
 
@@ -211,18 +212,20 @@ function enemyBehavior() {
     } else {
         enemy.velocity.x = 0;
         enemy.isAttacking = true;
-
         enemyAnimationState = 1;
         if (enemyLeft == true) {
             if (enemy.isAttacking == true) {
                 enemyAnimationState = 9;
+                enemy.attack();
+
             }
         }
         if (enemyRight == true) {
-
             enemyAnimationState = 0;
             if (enemy.isAttacking == true) {
                 enemyAnimationState = 8;
+                enemy.attack();
+
             }
         }
     }

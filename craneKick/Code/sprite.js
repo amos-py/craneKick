@@ -36,6 +36,7 @@ class Fighter {
         }
         this.isAttacking;
         this.isAttacked;
+        this.attackTimer = 1000;
         this.color = color;
     }
 
@@ -88,7 +89,7 @@ class Fighter {
         this.isAttacking = true;
         setTimeout(() => {
             this.isAttacking = false;
-        }, 500)
+        }, this.attackTimer)
     }
 
     crouch() {
